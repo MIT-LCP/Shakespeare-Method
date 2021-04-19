@@ -83,7 +83,7 @@ conda activate env_py3
 This file is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. Saves to new table in postgres database named `inputs_all`
 + uses python2 environment
 
-### 1.1_create_groups_concat_notes
+## 1.1_create_groups_concat_notes
 [1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
 
 + uses python2 environment
@@ -104,14 +104,14 @@ Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`
 + Retrieves all the notes from these admissions, puts them in chronological order, and concatenates them into one large 'document' per admission
 + Saves as a new sql table `transfused_notes_sink` and `ctrl_notes_sink` in mimiciii postgres database for analysis.
 
-### 1.2_duplicate_removal
+## 1.2_duplicate_removal
 [1.2_duplicate_removal.ipynb](1.2_duplicate_removal.ipynb)
 
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
 
 Uses modified bloatectomy code to remove duplicate sections of text w/in an admission's concatenated notes. Saves to postgres database in new tables `transfused_notes_unique` and `ctrl_notes_unique`
 
-### 1.3_vectorization.ipynb
+## 1.3_vectorization.ipynb
 [1.3_vectorization.ipynb](1.3_vectorization.ipynb)
 
 + uses python 2 environment in an AWS instance
@@ -121,6 +121,26 @@ Tokenize, get collocations (ngrams), count vectorize the data.  This one has to 
 We used an AWS (Amazon Web Services) EC2 memory-optimized instance (r4.8xlarge, 244GB memory, AMD64, Windows 10). The MIMIC database and POSTGRESQL must be accessible and the code in 1.0, 1.1, 1.2, should be run first to create the groups and deduplicate notes. The time to run the code was approximately 7.5 hours to create the groups, concatenate the notes into documents, and remove duplicate sections of text. We recommend only using an expensive/large instance for this step. All other steps can be done on a laptop with ~16 GB RAM.  
 
 + Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfering back to a local computer or cheaper instance faster)
-+ We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing
++ We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing.
 
+## 2.0_classification_models
+[2.0_classification_models.ipynb](2.0_classification_models.ipynb)
+
++ python 3 environment
+
+Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
+
++ test/train split
++ naive bayes classification
++ logistic regression classification
++ other classification models
++ plot confusion matrix and roc auc for multiple models
++ save model, and metrics + vocab
++ saves top (transfusion group) 5,000 terms from naive bayes (log probability) and logistic regression (coef) models for topic modeling and/or further review (pickle and csv) 
+```
+top_logit_coef_5000.csv
+logits_top_5000_matrix.pickle
+NB_top_5000_feat_[date].csv
+NB_top_5000_matrix.pickle
+```
 
