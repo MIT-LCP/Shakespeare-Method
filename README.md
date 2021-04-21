@@ -179,3 +179,27 @@ NB_5000_final.pkl
 NB_top_xxxx_terms_only_dist.csv
 NB_top_xxxx_hadmids_forSME.csv
 ```
+## 2.2_lr_remove_xf_term_collapse_ngrams
+[2.2_lr_remove_xf_term_collapse_ngrams.ipynb](2.2_lr_remove_xf_term_collapse_ngrams.ipynb)
+
++ python 3 environment
++ for the Logistic Regression results
++ Remove terms that are clearly related to transfusion using [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
++ Collapse duplicate ngrams into longest n-gram
++ Analyze frequency of terms
++ Plot basic visuals
++ Save for next analysis as `LR_5000_final.pkl`
++ Save the terms, coef, and frequency count for SMEs as `LR_top_5000_terms_only.csv`
+
+**Input**
+```
+logits_top_5000_matrix.pickle
+transfused_notes_unique (postgres table)
+terms_indicate_transfusion9.xlsx
+textfeatures_id.pickle
+```
+**Output**
+```
+LR_5000_final.pkl
+LR_top_5000_terms_only.csv
+```
