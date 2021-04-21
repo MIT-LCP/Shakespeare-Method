@@ -321,3 +321,18 @@ final_classification_features.csv
 ```
 all_filtered_features.csv
 ```
+## 3.0_topic_model_transfused_filtered_vocab
+[3.0_topic_model_transfused_filtered_vocab.ipynb](3.0_topic_model_transfused_filtered_vocab.ipynb)
+
+
+Vectorization (count) the transfused admissions using vocabulary from [2.4_filtered_vocab.ipynb](2.4.0_filtered_vocab.ipynb) `all_filtered_features.csv`, then LDA topic modeling. Plot results using pyLDAvis and send to SMEs for review. Several models, visualizations and dataframes can be saved from this notebook, but this example contains the parameters for the best/final model parameters.
+
+**Input**
+```
+transfused_notes_unique
+ctrl_notes_unique
+all_filtered_features.csv
+```
+**Output**
+```
+```
