@@ -150,6 +150,32 @@ Runs multiple classification models on the 2 groups (transfused and non-transfus
 top_logit_coef_5000.csv
 logits_top_5000_matrix.pickle
 NB_top_5000_feat_[date].csv
+NB_terms_ratio_all.pkl
 NB_top_5000_matrix.pickle
 ```
 
+## 2.1_nb_remove_xf_term_collapse_ngrams
+[2.1_nb_remove_xf_term_collapse_ngrams.ipynb](2.1_nb_remove_xf_term_collapse_ngrams.ipynb)
+
++ python 3 environment
++ Remove terms from the Naive Bayes vocabulary list that are clearly related to transfusion via [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
++ Collapse duplicate ngrams into longest n-gram
++ Analyze frequency of terms
++ Save for next analysis as `NB_5000_final.pkl`
++ Plot basic visuals
++ Save the terms, log probability ratio, and frequency count  as `NB_top_4879_terms_only_dist.csv`
++ Save terms and hadm_ids with hadm_ids as `NB_top_4879_hadmids_forSME.csv`
+**Input**
+```
+NB_top_5000_matrix.pickle
+transfused_notes_unique (postgres table)
+terms_indicate_transfusion9.xlsx
+textfeatures_id.pickle
+```
+**Output**
+```
+NB_5000_final.csv
+NB_5000_final.pkl
+NB_top_xxxx_terms_only_dist.csv
+NB_top_xxxx_hadmids_forSME.csv
+```
