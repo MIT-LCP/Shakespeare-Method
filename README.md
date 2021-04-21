@@ -281,7 +281,7 @@ Run new classification on full dataset (no test-train split) using Logistic Regr
 + load cleaned Naive Bayes vocab from 2.1
 + load cleaned Logistic Regression (l2 penalty) from 2.2
 + run chi squared on full vocab and filter for terms p=<.05
-+ outer join together in one df and save as `final_classification_vocab.csv`
++ outer join together in one df and save as `final_classification_features.csv`
 
 **Input**
 ```
@@ -298,5 +298,26 @@ NB_top_4879_terms_only_dist.csv
 ```
 **Output**
 ```
-final_classification_vocab.csv
+final_classification_features.csv
+```
+## 2.4_filtered_vocab
+[2.4_filtered_vocab.ipynb](2.4_filtered_vocab.ipynb)
+
++ Python 3 environment
+
+This notebook filters features using word frequencies (criteria below) and joins this list with the classification features.
++ Remove terms that are only digits (no letters)
++ Keep words that appear in < 10% of non-transfused documents, AND also change by more than 30% between the 2 groups (non transfused - transfused)
++ or are only in the transfused group
++ Inner Join with the vocabulary from 2.3
+
+**Input**
+```
+transfused_notes_unique
+ctrl_notes_unique
+final_classification_features.csv
+```
+**Output**
+```
+all_filtered_features.csv
 ```
