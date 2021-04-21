@@ -122,6 +122,15 @@ We used an AWS (Amazon Web Services) EC2 memory-optimized instance (r4.8xlarge, 
 
 + Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfering back to a local computer or cheaper instance faster)
 + We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing.
+Output:
+```
+textfeatures_mat1
+...
+textfeatures_mat10 (data)
+textfeatures_vocab (features/terms)
+textfeatures_id (hadm_ids)
+textfeatures_source (transfused/non-transfused)
+```
 
 ## 2.0_classification_models
 [2.0_classification_models.ipynb](2.0_classification_models.ipynb)
