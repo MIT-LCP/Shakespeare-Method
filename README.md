@@ -81,12 +81,30 @@ conda activate env_py3
 [1.0_create_groups.ipynb](1.0_create_groups.ipynb)
 
 This file is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. Saves to new table in postgres database named `inputs_all`
-+ uses python2 environment
++ Python2 environment
+
+**Input**
+```
+patients
+admissions
+inputevents_mv
+inputevents_cv
+chartevents
+```
+**Output**
+```
+patients_adult
+inputevents_mv_adult
+inputevents_cv_adult
+chartevents_adult
+inputs_all
+
+```
 
 ## 1.1_create_groups_concat_notes
 [1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
 
-+ uses python2 environment
++ Python2 environment
 
 Label admissions and concatenate all notes for a single admission into one note (in chronological order).
 Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`
@@ -102,19 +120,53 @@ Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`
     4. No grey input item
 
 + Retrieves all the notes from these admissions, puts them in chronological order, and concatenates them into one large 'document' per admission
-+ Saves as a new sql table `transfused_notes_sink` and `ctrl_notes_sink` in mimiciii postgres database for analysis.
 
+**Input:** Postgres tables
+```
+procedures_icd
+inputs_all
+20180717D_ITEMS_related_to_blood_full.csv
+D_items
+noteevents
+```
+**Output:** Postgres tables
+```
+transfusion_icd9
+grey_icd9
+ctrl_icd9
+transfusion_items_dict
+D_items_labeled
+inputs_all_labeled
+transfused_hadm_id
+grey_hadm_id
+ctrl_ids
+transfused_notes
+ctrl_notes
+transfused_notes_sink
+ctrl_notes_sink
+```
 ## 1.2_duplicate_removal
 [1.2_duplicate_removal.ipynb](1.2_duplicate_removal.ipynb)
 
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
 
-Uses modified bloatectomy code to remove duplicate sections of text w/in an admission's concatenated notes. Saves to postgres database in new tables `transfused_notes_unique` and `ctrl_notes_unique`
+Uses modified bloatectomy code to remove duplicate sections of text within an admission's concatenated notes. 
+
+**Input**: postgres tables
+```
+transfused_notes_sink
+ctrl_notes_sink
+```
+**Output**: postgres tables
+```
+transfused_notes_unique 
+ctrl_notes_unique 
+```
 
 ## 1.3_vectorization.ipynb
 [1.3_vectorization.ipynb](1.3_vectorization.ipynb)
 
-+ uses python 2 environment in an AWS instance
++ Python 2 environment (recommended in an AWS instance)
 
 Tokenize, get collocations (ngrams), count vectorize the data.  This one has to be run on something with a large amount of ram (like 109Gb or so). Use the 'large' AWS instance. Alternatively, one could truncate the number of features (terms) to run this on a laptop or smaller instance.
 
@@ -122,7 +174,13 @@ We used an AWS (Amazon Web Services) EC2 memory-optimized instance (r4.8xlarge, 
 
 + Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfering back to a local computer or cheaper instance faster)
 + We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing.
-Output:
+
+**Input**
+```
+transfused_notes_unique (postgres)
+ctrl_notes_unique (postgres)
+```
+**Output:**
 ```
 textfeatures_mat1
 ...
@@ -146,6 +204,17 @@ Runs multiple classification models on the 2 groups (transfused and non-transfus
 + plot confusion matrix and roc auc for multiple models
 + save model, and metrics + vocab
 + saves top (transfusion group) 5,000 terms from naive bayes (log probability) and logistic regression (coef) models for topic modeling and/or further review (pickle and csv) 
+
+**Input**
+```
+textfeatures_mat1
+...
+textfeatures_mat10 (data)
+textfeatures_vocab (features/terms)
+textfeatures_id (hadm_ids)
+textfeatures_source (transfused/non-transfused)
+```
+**Output**
 ```
 top_logit_coef_5000.csv
 logits_top_5000_matrix.pickle
