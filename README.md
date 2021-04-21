@@ -272,3 +272,31 @@ textfeatures_id.pickle
 LR_5000_final.pkl
 LR_top_5000_terms_only.csv
 ```
+## 2.3_classification_vocabs
+[2.3_classification_vocabs.ipynb](2.3_classification_vocabs.ipynb)
++ python 3 environment
+
+Run new classification on full dataset (no test-train split) using Logistic Regression (l1 penalty) and filter out low scoring words coef<0.2.
+
++ load cleaned Naive Bayes vocab from 2.1
++ load cleaned Logistic Regression (l2 penalty) from 2.2
++ run chi squared on full vocab and filter for terms p=<.05
++ outer join together in one df and save as `final_classification_vocab.csv`
+
+**Input**
+```
+textfeatures_mat1
+...
+textfeatures_mat10 (data)
+textfeatures_vocab (features/terms)
+textfeatures_id (hadm_ids)
+textfeatures_source (transfused/non-transfused)
+LR_5000_final.pkl
+LR_top_5000_terms_only.csv
+NB_5000_final.pkl
+NB_top_4879_terms_only_dist.csv
+```
+**Output**
+```
+final_classification_vocab.csv
+```
