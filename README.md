@@ -331,13 +331,19 @@ Vectorization (count) the transfused admissions using vocabulary from [2.4_filte
 **Input**
 ```
 transfused_notes_unique
-ctrl_notes_unique
 all_filtered_features.csv
 ```
 **Output**
 ```
+*_filtered_v1.html (pyLDA interactive visualization of topic model)
+*_filtered_v1vect_model.pkl (count vectorizer)
+*_filtered_v1vect_data.pkl (vectorized data)
+*_filtered_v1_params.txt (topic modeling parameters)
+*_filtered_v1_model.pkl (topic model)
+*_filtered_v1_data.pkl (results of topic model)
+*_filtered_v1_xx_words_scores.csv (top xx words scores for each topic)
+*_filtered_v1_xx_words_proba.csv (top xx words proba for each topic)
 *_filtered_v1_all_topic_scores_hadmids.csv
-*_filtered_v1_data.pkl
 *_filtered_v1_max_topic_all_hadmids.pkl
 *_filtered_v1_max_topic_all_hadmids.csv
 *_filtered_v1_thresh_15_outlier_hadmids.pkl
