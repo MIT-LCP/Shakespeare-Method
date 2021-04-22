@@ -5,9 +5,32 @@ The Shakespeare-Method repository contains the code we used (in a user friendly 
 
 We chose the case of transfusion adverse events  and potential transfusion adverse events because new transfusion adverse events types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential transfusion adverse events in the notes. We used MIMIC-III (EHRs for adult critical care admissions at a major teaching hospital, 2001-2012) dataset and formed a Transfused group (21,443 admissions treated with packed red blood cells, platelets, or plasma), excluded 2,373 ambiguous admissions (grey), and formed a Comparison group of 25,468 admissions. We concatenated the text notes for each admission, sorted by date, into one document, and deleted replicate sentences and lists. We  identified statistically significant words in Transfused vs. Comparison. Then, Transfused documents were vectorized on only those words, followed by topic modeling on these Transfused documents to produce 45 topics. After assigning the maximum topic to each document, we separated the documents (admissions) that had a low maximum topic score for further review by subject matter experts to evaluate for potential adverse events.
 
+# Citations
+To acknowledge use of the code, please cite the DOI provided via Zenodo:
+Summer K. Rankin. (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
+```
+@software{summer_k_rankin_2021_4711819,
+  author       = {Summer K. Rankin and Roselie A. Bright and Kate Dowdy},
+  title        = {MIT-LCP/Shakespeare-Method: Official release 2},
+  month        = apr,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {v0.2},
+  doi          = {10.5281/zenodo.4711819},
+  url          = {https://doi.org/10.5281/zenodo.4711819}
+}
+```
 
-Questions about this code can be sent to Summer Rankin (rankin_summer@bah.com, summerkrankin@gmail.com) or Kate Dowdy (dowdy_katherine@bah.com).
+and the papers describing the Shakespeare Method
+```
+Bright RA, Dowdy K, Rankin SK, Blok S, Palmer LA, Bright-Ponte SJ. New and Increasing Rates of Adverse Events Can be Found in Unstructured Text in Electronic Health Records using the Shakespeare Method. medRxiv 2021.01.12.21249674. https://doi.org/10.1101/2021.01.12.21249674.
+ 
+Bright RA, Rankin SK, Dowdy K, Blok S, Bright-Ponte, SJ, Palmer LA. Potential Blood Transfusion Adverse Events Can be Found in Unstructured Text in Electronic Health Records using the ‘Shakespeare Method’. medRxiv 2021.01.05.21249239. https://doi.org/10.1101/2021.01.05.21249239.
+ 
+Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
+```
 
+## Structure of repository
 x.y_description
 + *x*=major section of analysis
 + *y*=order within section
