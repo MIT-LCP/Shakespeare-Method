@@ -1,4 +1,4 @@
-# Shakespeare-Method
+# Shakespeare-Method [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4711819.svg)](https://doi.org/10.5281/zenodo.4711819)
 ## Text mining electronic health records
 
 The Shakespeare-Method repository contains the code we used (in a user friendly tutorial style) to develop a new method to identify attributed and unattributed potential adverse events using the unstructured notes portion of electronic health records. 
@@ -9,6 +9,7 @@ We chose the case of transfusion adverse events  and potential transfusion adver
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
 
 Summer K. Rankin, Roselie A. Bright, Katherine Dowdy. (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
+[10.5281/zenodo.4711819](10.5281/zenodo.4711819)
 ```
 @software{summer_k_rankin_2021_4711819,
   author       = {Summer K. Rankin and Roselie A. Bright and Kate Dowdy},
