@@ -361,3 +361,18 @@ all_filtered_features.csv
 *_filtered_v1_thresh_15_outlier_hadmids.pkl
 *_filtered_v1_thresh_15_outlier_hadmids.csv
 ```
+# Contributing
+
+We encourage you to share any additions or changes to our code. To contribute, please:
+
+Fork the repository using the following link: https://github.com/MIT-LCP/Shakespeare-Method/fork. For a background on GitHub forks, see: https://help.github.com/articles/fork-a-repo/
+
+Commit your changes to the forked repository.
+
+Submit a pull request to the MIMIC code repository, using the method described at: https://help.github.com/articles/using-pull-requests/
+
+# License
+By committing your code to the Bloatectomy Repository you agree to release the code under the GNU General Public License v3.0 in this repository.
+
+# Bugs
+Please feel free to create an issue for any questions, bugs, or suggestions you may have about our package or even the documentation (i.e. additional examples). We appreciate any feedback.
