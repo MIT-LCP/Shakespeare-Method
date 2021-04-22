@@ -7,7 +7,7 @@ We chose the case of transfusion adverse events  and potential transfusion adver
 
 # Citations
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
-Summer K. Rankin. (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
+Summer K. Rankin, Roselie A. Bright, Katherine Dowdy. (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
 ```
 @software{summer_k_rankin_2021_4711819,
   author       = {Summer K. Rankin and Roselie A. Bright and Kate Dowdy},
@@ -22,13 +22,13 @@ Summer K. Rankin. (2021, April 22). MIT-LCP/Shakespeare-Method: Official release
 ```
 
 and the papers describing the Shakespeare Method
-```
+
 Bright RA, Dowdy K, Rankin SK, Blok S, Palmer LA, Bright-Ponte SJ. New and Increasing Rates of Adverse Events Can be Found in Unstructured Text in Electronic Health Records using the Shakespeare Method. medRxiv 2021.01.12.21249674. https://doi.org/10.1101/2021.01.12.21249674.
  
 Bright RA, Rankin SK, Dowdy K, Blok S, Bright-Ponte, SJ, Palmer LA. Potential Blood Transfusion Adverse Events Can be Found in Unstructured Text in Electronic Health Records using the ‘Shakespeare Method’. medRxiv 2021.01.05.21249239. https://doi.org/10.1101/2021.01.05.21249239.
  
 Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
-```
+
 
 ## Structure of repository
 x.y_description
