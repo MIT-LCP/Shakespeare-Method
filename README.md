@@ -36,10 +36,10 @@ x.y_description
 + *x*=major section of analysis
 + *y*=order within section
 
-  + 1.x = labeling, preprocessing, cleaning, tokenization, vectorization
-  + 2.x = feature selection
-  + 3.x = LDA topic modeling
-  + 4.x = send to elasticsearch
+  + 1.y = labeling, preprocessing, cleaning, tokenization, vectorization
+  + 2.y = feature selection
+  + 3.y = LDA topic modeling
+  + 4.y = send to elasticsearch
 
 ## Data
 This project uses the MIMIC III Database. The MIMIC-III database was ingested into in a PostgreSQL (version 10.11 downloaded January 12,2020) database using PostgreSQL scripts from (https://github.com/MIT-LCP/mimic-code/tree/master/buildmimic/postgres, accessed January 12, 2020.
