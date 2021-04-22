@@ -1,6 +1,11 @@
 # Shakespeare-Method
 ## Text mining electronic health records
 
+The Shakespeare-Method repository contains the code we used (in a user friendly tutorial style) to develop a new method to identify attributed and unattributed potential adverse events using the unstructured notes portion of electronic health records. 
+
+We chose the case of transfusion adverse events  and potential transfusion adverse events because new transfusion adverse events types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential transfusion adverse events in the notes. We used MIMIC-III (EHRs for adult critical care admissions at a major teaching hospital, 2001-2012) dataset and formed a Transfused group (21,443 admissions treated with packed red blood cells, platelets, or plasma), excluded 2,373 ambiguous admissions (grey), and formed a Comparison group of 25,468 admissions. We concatenated the text notes for each admission, sorted by date, into one document, and deleted replicate sentences and lists. We  identified statistically significant words in Transfused vs. Comparison. Then, Transfused documents were vectorized on only those words, followed by topic modeling on these Transfused documents to produce 45 topics. After assigning the maximum topic to each document, we separated the documents (admissions) that had a low maximum topic score for further review by subject matter experts to evaluate for potential adverse events.
+
+
 Questions about this code can be sent to Summer Rankin (rankin_summer@bah.com, summerkrankin@gmail.com) or Kate Dowdy (dowdy_katherine@bah.com).
 
 x.y_description
