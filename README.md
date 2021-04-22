@@ -336,4 +336,10 @@ all_filtered_features.csv
 ```
 **Output**
 ```
+*_filtered_v1_all_topic_scores_hadmids.csv
+*_filtered_v1_data.pkl
+*_filtered_v1_max_topic_all_hadmids.pkl
+*_filtered_v1_max_topic_all_hadmids.csv
+*_filtered_v1_thresh_15_outlier_hadmids.pkl
+*_filtered_v1_thresh_15_outlier_hadmids.csv
 ```
