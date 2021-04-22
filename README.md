@@ -9,7 +9,6 @@ We chose the case of transfusion adverse events  and potential transfusion adver
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
 
 Summer K. Rankin, Roselie A. Bright, Katherine Dowdy. (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
-[10.5281/zenodo.4711819](10.5281/zenodo.4711819)
 ```
 @software{summer_k_rankin_2021_4711819,
   author       = {Summer K. Rankin and Roselie A. Bright and Kate Dowdy},
