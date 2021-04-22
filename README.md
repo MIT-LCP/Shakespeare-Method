@@ -20,6 +20,7 @@ x.y_description
 ## Data
 This project uses the MIMIC III Database. The MIMIC-III database was ingested into in a PostgreSQL (version 10.11 downloaded January 12,2020) database using PostgreSQL scripts from (https://github.com/MIT-LCP/mimic-code/tree/master/buildmimic/postgres, accessed January 12, 2020.
 
+
 ### Connecting python to PostgreSQL
 The packages we used to connect python to posgreSQL are called `psycopg2` and `sqlalchemy`. You will need to install PostgreSQL and build the MIMIC Database and put the passwords and usernames into the environment variables or directily into the notebook in order to connect to the data. This is typically the first thing in each notebook under package imports.  
 
@@ -156,6 +157,12 @@ ctrl_notes_sink
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
 
 Uses modified bloatectomy code to remove duplicate sections of text within an admission's concatenated notes. 
+For details about how the package works and our reasons for developing it, read the paper here https://github.com/MIT-LCP/bloatectomy/blob/master/bloatectomy_paper.pdf
+
+To acknowledge use of the Bloatectomy software, please cite the DOI provided via Zenodo:
+
+Summer K. Rankin, Roselie Bright, & Katherine Dowdy. (2020, June 26). Bloatectomy (Version v0.0.12). Zenodo. http://doi.org/10.5281/zenodo.3909030
+
 
 **Input**: postgres tables
 ```
