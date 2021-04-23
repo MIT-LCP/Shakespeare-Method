@@ -124,8 +124,10 @@ conda activate env_py3
 ### 1.0_create_groups
 [1.0_create_groups.ipynb](1.0_create_groups.ipynb)
 
-This file is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. Saves to new table in postgres database named `inputs_all`
 + Python2 environment
++ 
+This notebook is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. 
+![flowchart_of_cohort_creation](./cohort.png)
 
 **Input**
 ```
@@ -257,6 +259,7 @@ Features (terms) are selected using 2 methods:
 + python 3 environment
 
 Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
+![flowchart of the supervised feature selection process](./supervised_flow.png)
 
 + test/train split
 + naive bayes classification
@@ -288,13 +291,28 @@ NB_top_5000_matrix.pickle
 [2.1_nb_remove_xf_term_collapse_ngrams.ipynb](2.1_nb_remove_xf_term_collapse_ngrams.ipynb)
 
 + python 3 environment
+
+After sorting the n-grams according to the feature log probability, we removed all terms making direct and exclusive reference to the act of transfusion, because they both merely repeat the criteria for membership in the transfused group and obscure terms from other notes that might be indications for or outcomes of transfusion; as would be expected, these terms were highly associated with being in the transfused group. These transfusion terms were identified for removal by manual inspection (necessary because of the variety of abbreviations and spellings) informed by the contexts of these terms in multiple notes. Each time these transfusion-related terms were removed, they were added to a dictionary of transfusion-related terms. In the end this list grew to contain almost 1000 different terms [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
+
+The team observed that many of the top n-grams had significant word overlap and the same feature vector. We decided to collapse features into the longest possible n-gram where the features had the same feature vector (i.e., they all occurred in the same documents). To accomplish this, we selected all duplicate feature vectors and used fuzzy string matching to determine whether the corresponding features overlapped. We combined overlapping features to create the longest possible n-gram and dropped the smaller n-grams. For example, the following three n-grams had the same pattern of occurrence: 
+```
+comments heparin induced
+in comments heparin induced
+comments heparin induced thrombocytopenia
+```
+Our script collapses these three n-grams into one long n-gram.
+```
+in comments heparin induced thrombocytopenia
+```
+
 + Remove terms from the Naive Bayes vocabulary list that are clearly related to transfusion via [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
 + Collapse duplicate ngrams into longest n-gram
 + Analyze frequency of terms
 + Save for next analysis as `NB_5000_final.pkl`
 + Plot basic visuals
-+ Save the terms, log probability ratio, and frequency count  as `NB_top_4879_terms_only_dist.csv`
-+ Save terms and hadm_ids with hadm_ids as `NB_top_4879_hadmids_forSME.csv`
++ Save the terms, log probability ratio, and frequency count  as `NB_top_xxxx_terms_only_dist.csv`
++ Save terms and hadm_ids with hadm_ids
+
 **Input**
 ```
 NB_top_5000_matrix.pickle
@@ -313,13 +331,18 @@ NB_top_xxxx_hadmids_forSME.csv
 [2.2_lr_remove_xf_term_collapse_ngrams.ipynb](2.2_lr_remove_xf_term_collapse_ngrams.ipynb)
 
 + python 3 environment
-+ for the Logistic Regression results
-+ Remove terms that are clearly related to transfusion using [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
+
+After sorting the n-grams according to the feature log probability, we removed all terms making direct and exclusive reference to the act of transfusion, because they both merely repeat the criteria for membership in the transfused group and obscure terms from other notes that might be indications for or outcomes of transfusion; as would be expected, these terms were highly associated with being in the transfused group. These transfusion terms were identified for removal by manual inspection (necessary because of the variety of abbreviations and spellings) informed by the contexts of these terms in multiple notes. Each time these transfusion-related terms were removed, they were added to a dictionary of transfusion-related terms. In the end this list grew to contain almost 1000 different terms [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
+
+For the logistic regression terms, none were overlapping and this step can be removed but the code has been left in the script.
+
+
++ Remove terms that are clearly related to transfusion
 + Collapse duplicate ngrams into longest n-gram
 + Analyze frequency of terms
 + Plot basic visuals
 + Save for next analysis as `LR_5000_final.pkl`
-+ Save the terms, coef, and frequency count for SMEs as `LR_top_5000_terms_only.csv`
++ Save the terms, coef, and frequency count for SMEs
 
 **Input**
 ```
