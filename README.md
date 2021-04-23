@@ -6,16 +6,16 @@ The Shakespeare-Method repository contains the code we used (in a user friendly 
 We chose the case of transfusion adverse events  and potential transfusion adverse events because new transfusion adverse events types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential transfusion adverse events in the notes. We used MIMIC-III (EHRs for adult critical care admissions at a major teaching hospital, 2001-2012) dataset and formed a Transfused group (21,443 admissions treated with packed red blood cells, platelets, or plasma), excluded 2,373 ambiguous admissions (grey), and formed a Comparison group of 25,468 admissions. We concatenated the text notes for each admission, sorted by date, into one document, and deleted replicate sentences and lists. We  identified statistically significant words in Transfused vs. Comparison. Then, Transfused documents were vectorized on only those words, followed by topic modeling on these Transfused documents to produce 45 topics. After assigning the maximum topic to each document, we separated the documents (admissions) that had a low maximum topic score for further review by subject matter experts to evaluate for potential adverse events.
 
 **The Shakespeare Method has five steps:**
-•	Step 1. Convert each document into a vector of n-gram (term) frequencies.
-•	Step 2. Create two groups of vectors: target and comparison.
-•	Step 3. Extract terms in the target group that are significant for the target group.
-•	Step 4. Apply topic analysis to the target group filtered vectors.
-•	Step 5. Review the original documents that have topic scores of interest to interpret the topics and find potential adverse events.
+ 
++ Step 1. Convert each document into a vector of n-gram (term) frequencies.
++ Step 2. Create two groups of vectors: target and comparison.
++ Step 3. Extract terms in the target group that are significant for the target group.
++ Step 4. Apply topic analysis to the target group filtered vectors.
++ Step 5. Review the original documents that have topic scores of interest to interpret the topics and find potential adverse events.
 
 Step 2 is described in detail in Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
 
 Steps 1, 3, and 4 are described in detail in this repository. An flowchart of this process can be seen below
-![image](https://user-images.githubusercontent.com/7853537/115798996-3b83ec00-a373-11eb-8996-549709f6e02e.png)
 
 [flow of data through the Shakespeare Method](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/SM_overview_pic.png)
 
