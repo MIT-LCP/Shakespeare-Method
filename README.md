@@ -1,9 +1,23 @@
 # Shakespeare-Method [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4711819.svg)](https://doi.org/10.5281/zenodo.4711819)
-## Text mining electronic health records
+### Text mining electronic health records
 
 The Shakespeare-Method repository contains the code we used (in a user friendly tutorial style) to develop a new method to identify attributed and unattributed potential adverse events using the unstructured notes portion of electronic health records. 
 
 We chose the case of transfusion adverse events  and potential transfusion adverse events because new transfusion adverse events types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential transfusion adverse events in the notes. We used MIMIC-III (EHRs for adult critical care admissions at a major teaching hospital, 2001-2012) dataset and formed a Transfused group (21,443 admissions treated with packed red blood cells, platelets, or plasma), excluded 2,373 ambiguous admissions (grey), and formed a Comparison group of 25,468 admissions. We concatenated the text notes for each admission, sorted by date, into one document, and deleted replicate sentences and lists. We  identified statistically significant words in Transfused vs. Comparison. Then, Transfused documents were vectorized on only those words, followed by topic modeling on these Transfused documents to produce 45 topics. After assigning the maximum topic to each document, we separated the documents (admissions) that had a low maximum topic score for further review by subject matter experts to evaluate for potential adverse events.
+
+**The Shakespeare Method has five steps:**
+•	Step 1. Convert each document into a vector of n-gram (term) frequencies.
+•	Step 2. Create two groups of vectors: target and comparison.
+•	Step 3. Extract terms in the target group that are significant for the target group.
+•	Step 4. Apply topic analysis to the target group filtered vectors.
+•	Step 5. Review the original documents that have topic scores of interest to interpret the topics and find potential adverse events.
+
+Step 2 is described in detail in Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
+
+Steps 1, 3, and 4 are described in detail in this repository. An flowchart of this process can be seen below
+![image](https://user-images.githubusercontent.com/7853537/115798996-3b83ec00-a373-11eb-8996-549709f6e02e.png)
+
+[flow of data through the Shakespeare Method](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/SM_overview_pic.png)
 
 # Citations
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
@@ -204,11 +218,13 @@ ctrl_notes_unique
 
 + Python 2 environment (recommended in an AWS instance)
 
-Tokenize, get collocations (ngrams), count vectorize the data.  This one has to be run on something with a large amount of ram (like 109Gb or so). Use the 'large' AWS instance. Alternatively, one could truncate the number of features (terms) to run this on a laptop or smaller instance.
+We used the collocation detection skip-gram method for extracting the n-grams with n = 1-5 consecutive words. We vectorized each document using a bag of words representation where each dimension is represented by the frequency (count) of each n-gram, resulting in a set of 7,422,044 words.
+
+This notebook is used to tokenize, get collocations (ngrams), count vectorize the transfused and comparison concatenated notes.  This one has to be run on something with a large amount of ram (like 109Gb or so). Use the 'large' AWS instance. Alternatively, one could truncate the number of features (terms) to run this on a laptop or smaller instance.
 
 We used an AWS (Amazon Web Services) EC2 memory-optimized instance (r4.8xlarge, 244GB memory, AMD64, Windows 10). The MIMIC database and POSTGRESQL must be accessible and the code in 1.0, 1.1, 1.2, should be run first to create the groups and deduplicate notes. The time to run the code was approximately 7.5 hours to create the groups, concatenate the notes into documents, and remove duplicate sections of text. We recommend only using an expensive/large instance for this step. All other steps can be done on a laptop with ~16 GB RAM.  
 
-+ Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfering back to a local computer or cheaper instance faster)
++ Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfer back to a local computer or cheaper instance faster)
 + We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing.
 
 **Input**
@@ -225,6 +241,15 @@ textfeatures_vocab (features/terms)
 textfeatures_id (hadm_ids)
 textfeatures_source (transfused/non-transfused)
 ```
+# Section 2: Feature Selection
+Our goal for feature selection was to filter document vectors to only include terms that were significant to the transfused group and then model the topics within those terms in the transfused group to identify experiences emblematic of transfusion. We formalized the process of extracting these terms by looking at term coefficients associated with a classifier that learns to differentiate the two groups. We underwent an iterative process of trying multiple hyperparameters and classification models to identify these terms. We observed that an ensemble of two classification methods (Naive Bayes and logistic regression) and filtering was useful for capturing common, infrequent, and rare terms that were significant for the Transfused group.  This term selection resulted in in 41,664 terms. 
+
+Features (terms) are selected using 2 methods:
+1. Embedded methods: supervised learning and statistical models
+2. Filtering
+
+[Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png)
+
 
 ## 2.0_classification_models
 [2.0_classification_models.ipynb](2.0_classification_models.ipynb)
@@ -361,6 +386,7 @@ all_filtered_features.csv
 [3.0_topic_model_transfused_filtered_vocab.ipynb](3.0_topic_model_transfused_filtered_vocab.ipynb)
 
 + Python 3
+We reduced the Transfused document vectors to include only the 41,664 terms from 2.x.
 
 Vectorization (count) the transfused admissions using vocabulary from [2.4_filtered_vocab.ipynb](2.4.0_filtered_vocab.ipynb) `all_filtered_features.csv`, then LDA topic modeling. Plot results using pyLDAvis and send to SMEs for review. Several models, visualizations and dataframes can be saved from this notebook, but this example contains the parameters for the best/final model parameters.
 
