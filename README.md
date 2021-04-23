@@ -55,11 +55,11 @@ x.y_description
   + 3.y = LDA topic modeling
   + 4.y = send to elasticsearch
 
-## Data
+# Data
 This project uses the MIMIC III Database. The MIMIC-III database was ingested into in a PostgreSQL (version 10.11 downloaded January 12,2020) database using PostgreSQL scripts from (https://github.com/MIT-LCP/mimic-code/tree/master/buildmimic/postgres, accessed January 12, 2020.
 
 
-### Connecting python to PostgreSQL
+# Connecting python to PostgreSQL
 The packages we used to connect python to posgreSQL are called `psycopg2` and `sqlalchemy`. You will need to install PostgreSQL and build the MIMIC Database and put the passwords and usernames into the environment variables or directily into the notebook in order to connect to the data. This is typically the first thing in each notebook under package imports.  
 
 Directly putting in variables looks like the following:
@@ -104,7 +104,7 @@ cur.execute("""SET search_path = mimiciii;""")
 
 engine = create_engine(POSTGRES_ENGINE)
 ```
-## Environment
+# Environment
 Anaconda environments were used to manage python packages and versions. We used both python2 and python3 environments that can be created by using the [shakesPy2_environment.yml](shakesPy2_environment.yml) for python 2
 
 In a terminal window, after you have installed Anaconda, go into the folder where this repository exists and type the following. 
@@ -121,7 +121,7 @@ cd Shakespeare-Method
 conda env create -f env_py3.yml
 conda activate env_py3
 ```
-### 1.0_create_groups
+# 1.0_create_groups
 [1.0_create_groups.ipynb](1.0_create_groups.ipynb)
 
 + Python2 environment
@@ -147,7 +147,7 @@ inputs_all
 
 ```
 
-## 1.1_create_groups_concat_notes
+# 1.1_create_groups_concat_notes
 [1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
 
 + Python2 environment
@@ -191,7 +191,7 @@ ctrl_notes
 transfused_notes_sink
 ctrl_notes_sink
 ```
-## 1.2_duplicate_removal
+# 1.2_duplicate_removal
 [1.2_duplicate_removal.ipynb](1.2_duplicate_removal.ipynb)
 
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
@@ -215,7 +215,7 @@ transfused_notes_unique
 ctrl_notes_unique 
 ```
 
-## 1.3_vectorization.ipynb
+# 1.3_vectorization.ipynb
 [1.3_vectorization.ipynb](1.3_vectorization.ipynb)
 
 + Python 2 environment (recommended in an AWS instance)
@@ -253,7 +253,7 @@ Features (terms) are selected using 2 methods:
 ![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png)
 
 
-## 2.0_classification_models
+# 2.0_classification_models
 [2.0_classification_models.ipynb](2.0_classification_models.ipynb)
 
 + python 3 environment
@@ -288,7 +288,7 @@ NB_terms_ratio_all.pkl
 NB_top_5000_matrix.pickle
 ```
 
-## 2.1_nb_remove_xf_term_collapse_ngrams
+# 2.1_nb_remove_xf_term_collapse_ngrams
 [2.1_nb_remove_xf_term_collapse_ngrams.ipynb](2.1_nb_remove_xf_term_collapse_ngrams.ipynb)
 
 + python 3 environment
@@ -328,7 +328,7 @@ NB_5000_final.pkl
 NB_top_xxxx_terms_only_dist.csv
 NB_top_xxxx_hadmids_forSME.csv
 ```
-## 2.2_lr_remove_xf_term_collapse_ngrams
+# 2.2_lr_remove_xf_term_collapse_ngrams
 [2.2_lr_remove_xf_term_collapse_ngrams.ipynb](2.2_lr_remove_xf_term_collapse_ngrams.ipynb)
 
 + python 3 environment
@@ -357,7 +357,7 @@ textfeatures_id.pickle
 LR_5000_final.pkl
 LR_top_5000_terms_only.csv
 ```
-## 2.3_classification_vocabs
+# 2.3_classification_vocabs
 [2.3_classification_vocabs.ipynb](2.3_classification_vocabs.ipynb)
 + python 3 environment
 
@@ -385,7 +385,7 @@ NB_top_4879_terms_only_dist.csv
 ```
 final_classification_features.csv
 ```
-## 2.4_filtered_vocab
+# 2.4_filtered_vocab
 [2.4_filtered_vocab.ipynb](2.4_filtered_vocab.ipynb)
 
 + Python 3 environment
@@ -406,7 +406,7 @@ final_classification_features.csv
 ```
 all_filtered_features.csv
 ```
-## 3.0_topic_model_transfused_filtered_vocab
+# 3.0_topic_model_transfused_filtered_vocab
 [3.0_topic_model_transfused_filtered_vocab.ipynb](3.0_topic_model_transfused_filtered_vocab.ipynb)
 
 + Python 3
