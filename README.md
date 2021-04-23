@@ -259,7 +259,8 @@ Features (terms) are selected using 2 methods:
 + python 3 environment
 
 Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
-![flowchart of the supervised feature selection process](./supervised_flow.png)
+
+![flowchart of the supervised feature selection process](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/supervised_flow.jpg)
 
 + test/train split
 + naive bayes classification
