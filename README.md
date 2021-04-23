@@ -17,7 +17,7 @@ Step 2 is described in detail in Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin,
 
 Steps 1, 3, and 4 are described in detail in this repository. An flowchart of this process can be seen below
 
-[flow of data through the Shakespeare Method](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/SM_overview_pic.png)
+![Shakespeare Method process with truncated examples](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/SM_overview_pic.png)
 
 # Citations
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
@@ -248,7 +248,7 @@ Features (terms) are selected using 2 methods:
 1. Embedded methods: supervised learning and statistical models
 2. Filtering
 
-[Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png)
+![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png)
 
 
 ## 2.0_classification_models
