@@ -250,8 +250,7 @@ Features (terms) are selected using 2 methods:
 1. Embedded methods: supervised learning and statistical models
 2. Filtering
 
-![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png | width=100)
-
+![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png?v=4&s=100)
 
 # 2.0 Feature Selection via Classification Models
 [2.0_classification_models.ipynb](2.0_classification_models.ipynb)
@@ -260,7 +259,7 @@ Features (terms) are selected using 2 methods:
 
 Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
 
-![flowchart of the supervised feature selection process](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/supervised_flow.jpg)
+![flowchart of the supervised feature selection process](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/supervised_flow.jpg?v=4&s=25)
 
 + test/train split
 + naive bayes classification
