@@ -121,7 +121,7 @@ cd Shakespeare-Method
 conda env create -f env_py3.yml
 conda activate env_py3
 ```
-# 1.0_create_groups
+# 1.0 Initial Cohort Creation
 [1.0_create_groups.ipynb](1.0_create_groups.ipynb)
 
 + Python2 environment
@@ -147,7 +147,7 @@ inputs_all
 
 ```
 
-# 1.1_create_groups_concat_notes
+# 1.1 Cohort Selection and Concatenate Notes
 [1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
 
 + Python2 environment
@@ -191,7 +191,7 @@ ctrl_notes
 transfused_notes_sink
 ctrl_notes_sink
 ```
-# 1.2_duplicate_removal
+# 1.2 Remove Notebloat
 [1.2_duplicate_removal.ipynb](1.2_duplicate_removal.ipynb)
 
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
@@ -215,7 +215,7 @@ transfused_notes_unique
 ctrl_notes_unique 
 ```
 
-# 1.3_vectorization.ipynb
+# 1.3 Vectorization of Text
 [1.3_vectorization.ipynb](1.3_vectorization.ipynb)
 
 + Python 2 environment (recommended in an AWS instance)
@@ -250,10 +250,10 @@ Features (terms) are selected using 2 methods:
 1. Embedded methods: supervised learning and statistical models
 2. Filtering
 
-![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png)
+![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png | width=300)
 
 
-# 2.0_classification_models
+# 2.0 Feature Selection via Classification Models
 [2.0_classification_models.ipynb](2.0_classification_models.ipynb)
 
 + python 3 environment
@@ -288,7 +288,7 @@ NB_terms_ratio_all.pkl
 NB_top_5000_matrix.pickle
 ```
 
-# 2.1_nb_remove_xf_term_collapse_ngrams
+# 2.1 Remove Transfusion Terms From Naive Bayes Features
 [2.1_nb_remove_xf_term_collapse_ngrams.ipynb](2.1_nb_remove_xf_term_collapse_ngrams.ipynb)
 
 + python 3 environment
@@ -328,7 +328,7 @@ NB_5000_final.pkl
 NB_top_xxxx_terms_only_dist.csv
 NB_top_xxxx_hadmids_forSME.csv
 ```
-# 2.2_lr_remove_xf_term_collapse_ngrams
+# 2.2 Remove Transfusion Terms From Logistic Regression Results
 [2.2_lr_remove_xf_term_collapse_ngrams.ipynb](2.2_lr_remove_xf_term_collapse_ngrams.ipynb)
 
 + python 3 environment
@@ -357,7 +357,7 @@ textfeatures_id.pickle
 LR_5000_final.pkl
 LR_top_5000_terms_only.csv
 ```
-# 2.3_classification_vocabs
+# 2.3 Feature Selection Via Classification and Statistical Models
 [2.3_classification_vocabs.ipynb](2.3_classification_vocabs.ipynb)
 + python 3 environment
 
@@ -385,7 +385,7 @@ NB_top_4879_terms_only_dist.csv
 ```
 final_classification_features.csv
 ```
-# 2.4_filtered_vocab
+# 2.4 Feature Selection via Frequency-Based Filtering
 [2.4_filtered_vocab.ipynb](2.4_filtered_vocab.ipynb)
 
 + Python 3 environment
@@ -406,7 +406,7 @@ final_classification_features.csv
 ```
 all_filtered_features.csv
 ```
-# 3.0_topic_model_transfused_filtered_vocab
+# 3.0 Topic Modeling
 [3.0_topic_model_transfused_filtered_vocab.ipynb](3.0_topic_model_transfused_filtered_vocab.ipynb)
 
 + Python 3
