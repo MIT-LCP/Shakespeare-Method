@@ -250,7 +250,7 @@ Features (terms) are selected using 2 methods:
 1. Embedded methods: supervised learning and statistical models
 2. Filtering
 
-![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png | width=300)
+![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png | width=100)
 
 
 # 2.0 Feature Selection via Classification Models
