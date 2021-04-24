@@ -1,5 +1,5 @@
 # Shakespeare-Method [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4711819.svg)](https://doi.org/10.5281/zenodo.4711819)
-### Text mining electronic health records
+#### Text mining electronic health records
 
 The Shakespeare-Method repository contains the code we used (in a user friendly tutorial style) to develop a new method to identify attributed and unattributed potential adverse events using the unstructured notes portion of electronic health records. 
 
