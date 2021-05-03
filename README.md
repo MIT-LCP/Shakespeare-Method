@@ -53,7 +53,6 @@ x.y_description
   + 1.y = labeling, preprocessing, cleaning, tokenization, vectorization
   + 2.y = feature selection
   + 3.y = LDA topic modeling
-  + 4.y = send to elasticsearch
 
 # Data
 This project uses the MIMIC III Database. The MIMIC-III database was ingested into in a PostgreSQL (version 10.11 downloaded January 12,2020) database using PostgreSQL scripts from (https://github.com/MIT-LCP/mimic-code/tree/master/buildmimic/postgres, accessed January 12, 2020.
@@ -125,7 +124,7 @@ conda activate env_py3
 [1.0_create_groups.ipynb](1.0_create_groups.ipynb)
 
 + Python2 environment
-+ 
+
 This notebook is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. 
 ![flowchart_of_cohort_creation](./cohort.png)
 
