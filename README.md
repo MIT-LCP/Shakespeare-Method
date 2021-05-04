@@ -1,11 +1,10 @@
 # Shakespeare-Method [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4711819.svg)](https://doi.org/10.5281/zenodo.4711819)
 #### Text mining electronic health records
 
-The Shakespeare-Method repository contains the code we used (in a user friendly tutorial style) to develop a new method to identify attributed and unattributed potential adverse events using the unstructured notes portion of electronic health records. 
+The Shakespeare-Method repository contains the code we used (in a user friendly tutorial style) to develop a new method to identify attributed and unattributed potential adverse events using the unstructured notes portion of electronic health records. This repository consists of ipython notebooks that are meant to be linear and easy to follow without having to understand the entire codebase. The level of abstraction has been kept to a minimum for this reason. Copies of the notebooks rendered as PDFs are provided in the [/pdf/](./pdf) directory for quick viewing. 
+
 
 We chose the case of transfusion adverse events  and potential transfusion adverse events because new transfusion adverse events types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential transfusion adverse events in the notes. We used MIMIC-III (EHRs for adult critical care admissions at a major teaching hospital, 2001-2012) dataset and formed a Transfused group (21,443 admissions treated with packed red blood cells, platelets, or plasma), excluded 2,373 ambiguous admissions (grey), and formed a Comparison group of 25,468 admissions. We concatenated the text notes for each admission, sorted by date, into one document, and deleted replicate sentences and lists. We  identified statistically significant words in Transfused vs. Comparison. Then, Transfused documents were vectorized on only those words, followed by topic modeling on these Transfused documents to produce 45 topics. After assigning the maximum topic to each document, we separated the documents (admissions) that had a low maximum topic score for further review by subject matter experts to evaluate for potential adverse events.
-
-This repository consists of ipython notebooks that are meant to be linear and easy to follow without having to understand the entire codebase. The level of abstraction has been kept to a minimum for this reason.
 
 **The Shakespeare Method has five steps:**
  
@@ -128,7 +127,7 @@ conda activate env_py3
 + Python2 environment
 
 This notebook is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. 
-![flowchart_of_cohort_creation](./cohort.png)
+![flowchart_of_cohort_creation](./images/cohort.png)
 
 **Input**
 ```
@@ -251,7 +250,7 @@ Features (terms) are selected using 2 methods:
 1. Embedded methods: supervised learning and statistical models
 2. Filtering
 
-![Flowchart of the feature selection methods](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/shakespeare_flowchart_publication.png)
+![Flowchart of the feature selection methods](./images/shakespeare_flowchart_publication.png)
 
 # 2.0 Feature Selection via Classification Models
 [2.0_classification_models.ipynb](2.0_classification_models.ipynb)
