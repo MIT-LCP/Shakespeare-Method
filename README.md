@@ -5,6 +5,8 @@ The Shakespeare-Method repository contains the code we used (in a user friendly 
 
 We chose the case of transfusion adverse events  and potential transfusion adverse events because new transfusion adverse events types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential transfusion adverse events in the notes. We used MIMIC-III (EHRs for adult critical care admissions at a major teaching hospital, 2001-2012) dataset and formed a Transfused group (21,443 admissions treated with packed red blood cells, platelets, or plasma), excluded 2,373 ambiguous admissions (grey), and formed a Comparison group of 25,468 admissions. We concatenated the text notes for each admission, sorted by date, into one document, and deleted replicate sentences and lists. We  identified statistically significant words in Transfused vs. Comparison. Then, Transfused documents were vectorized on only those words, followed by topic modeling on these Transfused documents to produce 45 topics. After assigning the maximum topic to each document, we separated the documents (admissions) that had a low maximum topic score for further review by subject matter experts to evaluate for potential adverse events.
 
+This repository consists of ipython notebooks that are meant to be linear and easy to follow without having to understand the entire codebase. The level of abstraction has been kept to a minimum for this reason.
+
 **The Shakespeare Method has five steps:**
  
 + Step 1. Convert each document into a vector of n-gram (term) frequencies.
@@ -15,7 +17,7 @@ We chose the case of transfusion adverse events  and potential transfusion adver
 
 Step 2 is described in detail in Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
 
-Steps 1, 3, and 4 are described in detail in this repository. An flowchart of this process can be seen below
+Steps 1, 3, and 4 are described in detail in this repository. A flowchart of this process can be seen below.
 
 ![Shakespeare Method process with truncated examples](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/SM_overview_pic.png)
 
@@ -104,7 +106,7 @@ cur.execute("""SET search_path = mimiciii;""")
 engine = create_engine(POSTGRES_ENGINE)
 ```
 # Environment
-Anaconda environments were used to manage python packages and versions. We used both python2 and python3 environments that can be created by using the [shakesPy2_environment.yml](shakesPy2_environment.yml) for python 2
+Anaconda environments were used to manage python packages and versions. We used both python2 and python3 environments that can be created by using the [shakesPy2_environment.yml](shakesPy2_environment.yml) for python 2.
 
 In a terminal window, after you have installed Anaconda, go into the folder where this repository exists and type the following. 
 ```
@@ -149,13 +151,13 @@ inputs_all
 # 1.1 Cohort Selection and Concatenate Notes
 [1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
 
-+ Python2 environment
++ Python2 environment.
 
 Label admissions and concatenate all notes for a single admission into one note (in chronological order).
-Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`
+Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`.
 
 + Uses ICD-9 codes to create control, transfused, and grey (excluded) groups.
-+ chart input items from the [20180717D_ITEMS_related_to_blood_full.csv](20180717D_ITEMS_related_to_blood_full.csv) to create a labeled dictionary of input items that belong to T=transfused, N=non-transfused, or G=grey(exclusion group).  
++ Get chart input items from the [20180717D_ITEMS_related_to_blood_full.csv](20180717D_ITEMS_related_to_blood_full.csv) to create a labeled dictionary of input items that belong to T=transfused, N=non-transfused, or G=grey(exclusion group).  
 
 + Transfused Group =  the union of admissions that have **ever** had a Transfused ICD-9 code **or** a Transfused input item.
 + Control (Non-transfused) = union of admissions that meet all 4 of the following conditions:
@@ -164,7 +166,7 @@ Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`
     3. No transfused input item
     4. No grey input item
 
-+ Retrieves all the notes from these admissions, puts them in chronological order, and concatenates them into one large 'document' per admission
++ Retrieves all the notes from these admissions, puts them in chronological order, and concatenates them into one large 'document' per admission.
 
 **Input:** Postgres tables
 ```
@@ -196,7 +198,7 @@ ctrl_notes_sink
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
 
 Uses modified bloatectomy code to remove duplicate sections of text within an admission's concatenated notes. 
-For details about how the package works and our reasons for developing it, read the paper here https://github.com/MIT-LCP/bloatectomy/blob/master/bloatectomy_paper.pdf
+For details about how the package works and our reasons for developing it, read the paper here https://github.com/MIT-LCP/bloatectomy/blob/master/bloatectomy_paper.pdf.
 
 To acknowledge use of the Bloatectomy software, please cite the DOI provided via Zenodo:
 
@@ -223,9 +225,9 @@ We used the collocation detection skip-gram method for extracting the n-grams wi
 
 This notebook is used to tokenize, get collocations (ngrams), count vectorize the transfused and comparison concatenated notes.  This one has to be run on something with a large amount of ram (like 109Gb or so). Use the 'large' AWS instance. Alternatively, one could truncate the number of features (terms) to run this on a laptop or smaller instance.
 
-We used an AWS (Amazon Web Services) EC2 memory-optimized instance (r4.8xlarge, 244GB memory, AMD64, Windows 10). The MIMIC database and POSTGRESQL must be accessible and the code in 1.0, 1.1, 1.2, should be run first to create the groups and deduplicate notes. The time to run the code was approximately 7.5 hours to create the groups, concatenate the notes into documents, and remove duplicate sections of text. We recommend only using an expensive/large instance for this step. All other steps can be done on a laptop with ~16 GB RAM.  
+We used an AWS (Amazon Web Services) EC2 memory-optimized instance (r4.8xlarge, 244GB memory, AMD64, Windows 10). The MIMIC database and POSTGRESQL must be accessible and the code in 1.0, 1.1, 1.2, should be run first to create the groups and deduplicate notes. The time to run the code was approximately 7.5 hours to create the groups, concatenate the notes into documents, and remove duplicate sections of text. We recommend using an expensive/large instance for only this step. All other steps can be done on a laptop with ~16 GB RAM.  
 
-+ Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfer back to a local computer or cheaper instance faster)
++ Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfer back to a local computer or cheaper instance faster).
 + We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing.
 
 **Input**
@@ -331,7 +333,7 @@ NB_top_xxxx_hadmids_forSME.csv
 
 + python 3 environment
 
-After sorting the n-grams according to the feature log probability, we removed all terms making direct and exclusive reference to the act of transfusion, because they both merely repeat the criteria for membership in the transfused group and obscure terms from other notes that might be indications for or outcomes of transfusion; as would be expected, these terms were highly associated with being in the transfused group. These transfusion terms were identified for removal by manual inspection (necessary because of the variety of abbreviations and spellings) informed by the contexts of these terms in multiple notes. Each time these transfusion-related terms were removed, they were added to a dictionary of transfusion-related terms. In the end this list grew to contain almost 1000 different terms [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
+After sorting the n-grams according to the feature log probability, we removed all terms making direct and exclusive reference to the act of transfusion, because they both merely repeat the criteria for membership in the transfused group and obscure terms from other notes that might be indications for or outcomes of transfusion; as would be expected, these terms were highly associated with being in the transfused group. These transfusion terms were identified for removal by manual inspection (necessary because of the variety of abbreviations and spellings) informed by the contexts of these terms in multiple notes. Each time these transfusion-related terms were removed, they were added to a dictionary of transfusion-related terms. In the end this list grew to contain almost 1000 different terms [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx).
 
 For the logistic regression terms, none were overlapping and this step can be removed but the code has been left in the script.
 
@@ -408,7 +410,7 @@ all_filtered_features.csv
 [3.0_topic_model_transfused_filtered_vocab.ipynb](3.0_topic_model_transfused_filtered_vocab.ipynb)
 
 + Python 3
-We reduced the Transfused document vectors to include only the 41,664 terms from 2.x.
+We reduced the Transfused document vectors to include only the 41,664 terms from 2.4.
 
 Vectorization (count) the transfused admissions using vocabulary from [2.4_filtered_vocab.ipynb](2.4.0_filtered_vocab.ipynb) `all_filtered_features.csv`, then LDA topic modeling. Plot results using pyLDAvis and send to SMEs for review. Several models, visualizations and dataframes can be saved from this notebook, but this example contains the parameters for the best/final model parameters.
 
