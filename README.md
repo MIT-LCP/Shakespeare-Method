@@ -121,12 +121,12 @@ cd Shakespeare-Method
 conda env create -f env_py3.yml
 conda activate env_py3
 ```
-# 1.0 Initial Cohort Creation
-[1.0_create_groups.ipynb](1.0_create_groups.ipynb)
+# 1.0 Create Adult Inputs Table
+[1.0_create_adult_inputs.ipynb](1.0_create_adult_inputs.ipynb)
 
 + Python2 environment
-+ 
-This notebook is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. 
+This notebook is the first of 2 steps to create the cohort for our study. 
+
 ![flowchart_of_cohort_creation](./cohort.png)
 
 **Input**
