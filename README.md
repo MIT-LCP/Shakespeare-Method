@@ -121,13 +121,15 @@ cd Shakespeare-Method
 conda env create -f env_py3.yml
 conda activate env_py3
 ```
-# 1.0 Initial Cohort Creation
-[1.0_create_groups.ipynb](1.0_create_groups.ipynb)
+# 1.0 Create Adult Inputs Table
+[1.0_create_adult_inputs.ipynb](1.0_create_adult_inputs.ipynb)
 
 + Python2 environment
++ Time and Transfused studies. 
+This notebook is the first of 2 steps to create the cohort for our study. 
 
-This notebook is the first of 2 steps to create the groups of adult admissions (>=16 years old), and the corresponding input events. 
-![flowchart_of_cohort_creation](./images/cohort.png)
+![flowchart_of_cohort_creation](./cohort.png)
+
 
 **Input**
 ```
@@ -147,10 +149,12 @@ inputs_all
 
 ```
 
-# 1.1 Cohort Selection and Concatenate Notes
+# 1.1 Transfused Cohort Selection 
 [1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
 
-+ Python2 environment.
++ Python2 environment
++ Transused Study Only
+
 
 Label admissions and concatenate all notes for a single admission into one note (in chronological order).
 Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`.
@@ -165,7 +169,6 @@ Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`.
     3. No transfused input item
     4. No grey input item
 
-+ Retrieves all the notes from these admissions, puts them in chronological order, and concatenates them into one large 'document' per admission.
 
 **Input:** Postgres tables
 ```
@@ -173,7 +176,6 @@ procedures_icd
 inputs_all
 20180717D_ITEMS_related_to_blood_full.csv
 D_items
-noteevents
 ```
 **Output:** Postgres tables
 ```
@@ -186,18 +188,40 @@ inputs_all_labeled
 transfused_hadm_id
 grey_hadm_id
 ctrl_ids
+```
+# 1.2 Time-based Cohort Selection
+
+
+
+# 1.3 Concatenate Notes
++ Python 2 environment
++ Both Time and Transfused Studies
++ Retrieves all the notes from the cohort admissions, puts them in chronological order, and concatenates them into one large single document per admission.
+
+**Input:** Postgres tables
+```
+transfused_hadm_id
+grey_hadm_id
+ctrl_ids
+noteevents
+```
+**Output:** Postgres tables
+```
 transfused_notes
 ctrl_notes
 transfused_notes_sink
 ctrl_notes_sink
 ```
-# 1.2 Remove Notebloat
-[1.2_duplicate_removal.ipynb](1.2_duplicate_removal.ipynb)
+
+# 1.x Remove Notebloat
+[1.x_duplicate_removal.ipynb](1.x_duplicate_removal.ipynb)
 
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
++ Time and Transfused studies. 
 
-Uses modified bloatectomy code to remove duplicate sections of text within an admission's concatenated notes. 
-For details about how the package works and our reasons for developing it, read the paper here https://github.com/MIT-LCP/bloatectomy/blob/master/bloatectomy_paper.pdf.
+Modified bloatectomy code to remove duplicate sections of text within an admission's concatenated notes. 
+For details about how the package works and our reasons for developing it, read the paper here https://github.com/MIT-LCP/bloatectomy/blob/master/bloatectomy_paper.pdf
+
 
 To acknowledge use of the Bloatectomy software, please cite the DOI provided via Zenodo:
 
@@ -219,6 +243,8 @@ ctrl_notes_unique
 [1.3_vectorization.ipynb](1.3_vectorization.ipynb)
 
 + Python 2 environment (recommended in an AWS instance)
++ Time and Transfused studies. 
+
 
 We used the collocation detection skip-gram method for extracting the n-grams with n = 1-5 consecutive words. We vectorized each document using a bag of words representation where each dimension is represented by the frequency (count) of each n-gram, resulting in a set of 7,422,044 words.
 
@@ -257,6 +283,7 @@ Features (terms) are selected using 2 methods:
 
 + python 3 environment
 
+
 Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
 
 <img src="https://github.com/MIT-LCP/Shakespeare-Method/blob/main/supervised_flow.jpg" width="400" height="700">
@@ -291,6 +318,8 @@ NB_top_5000_matrix.pickle
 [2.1_nb_remove_xf_term_collapse_ngrams.ipynb](2.1_nb_remove_xf_term_collapse_ngrams.ipynb)
 
 + python 3 environment
++ Time and Transfused studies. 
+
 
 After sorting the n-grams according to the feature log probability, we removed all terms making direct and exclusive reference to the act of transfusion, because they both merely repeat the criteria for membership in the transfused group and obscure terms from other notes that might be indications for or outcomes of transfusion; as would be expected, these terms were highly associated with being in the transfused group. These transfusion terms were identified for removal by manual inspection (necessary because of the variety of abbreviations and spellings) informed by the contexts of these terms in multiple notes. Each time these transfusion-related terms were removed, they were added to a dictionary of transfusion-related terms. In the end this list grew to contain almost 1000 different terms [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
 
