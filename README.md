@@ -18,7 +18,7 @@ Step 2 is described in detail in Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin,
 
 Steps 1, 3, and 4 are described in detail in this repository. A flowchart of this process can be seen below.
 
-![Shakespeare Method process with truncated examples](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/SM_overview_pic.png)
+![Shakespeare Method process with truncated examples](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/images/SM_overview_pic.png)
 
 # Citations
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
@@ -128,7 +128,7 @@ conda activate env_py3
 + Time and Transfused studies. 
 This notebook is the first of 2 steps to create the cohort for our study. 
 
-![flowchart_of_cohort_creation](./cohort.png)
+![flowchart_of_cohort_creation](./images/cohort.png)
 
 
 **Input**
@@ -288,7 +288,7 @@ Features (terms) are selected using 2 methods:
 
 Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
 
-<img src="https://github.com/MIT-LCP/Shakespeare-Method/blob/main/supervised_flow.jpg" width="400" height="700">
+<img src="https://github.com/MIT-LCP/Shakespeare-Method/blob/main/images/supervised_flow.jpg" width="400" height="700">
 
 + test/train split
 + naive bayes classification
