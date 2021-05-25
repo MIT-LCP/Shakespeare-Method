@@ -149,8 +149,8 @@ inputs_all
 
 ```
 
-# 1.1 Transfused Cohort Selection 
-[1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
+# 1.1a Transfused Cohort Selection 
+[1.1a_create_transfused_cohort.ipynb](1.1a_create_transfused_cohort.ipynb)
 
 + Python2 environment
 + Transused Study Only
@@ -189,11 +189,13 @@ transfused_hadm_id
 grey_hadm_id
 ctrl_ids
 ```
-# 1.2 Time-based Cohort Selection
+# 1.1b Time-based Cohort Selection
 
 
 
-# 1.3 Concatenate Notes
+# 1.2 Concatenate Notes
+[1.2_concat_notes.ipynb](1.2_concat_notes.ipynb)
+
 + Python 2 environment
 + Both Time and Transfused Studies
 + Retrieves all the notes from the cohort admissions, puts them in chronological order, and concatenates them into one large single document per admission.
@@ -213,8 +215,8 @@ transfused_notes_sink
 ctrl_notes_sink
 ```
 
-# 1.x Remove Notebloat
-[1.x_duplicate_removal.ipynb](1.x_duplicate_removal.ipynb)
+# 1.3 Remove Notebloat
+[1.3_bloatectomy.ipynb](1.3_bloatectomy.ipynb)
 
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
 + Time and Transfused studies. 
@@ -239,8 +241,8 @@ transfused_notes_unique
 ctrl_notes_unique 
 ```
 
-# 1.3 Vectorization of Text
-[1.3_vectorization.ipynb](1.3_vectorization.ipynb)
+# 1.4 Vectorization of Text
+[1.4_vectorization.ipynb](1.4_vectorization.ipynb)
 
 + Python 2 environment (recommended in an AWS instance)
 + Time and Transfused studies. 
