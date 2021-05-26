@@ -190,8 +190,35 @@ grey_hadm_id
 ctrl_ids
 ```
 # 1.1b Time-based Cohort Selection
+[1.1b_create_time_based_cohort.ipynb](1.1b_create_time_based_cohort.ipynb)
 
+Create a table in Postgres of admissions (and corresponding notes) related to heparin time periods by using a specific file that reveals the de-identified dates. 
 
+1.1.0 Import hadm_ids for which time key exists <br />
+1.1.1 Keep only adults from Carevue <br />
+1.1.2 Pull admissions that match the hadm_ids with time key <br />
+1.1.3 Pull admit times/ discharge times from admissions table <br />
+1.1.4 Save to a new table in posgres <br />
+1.1.5 Get notes for those admissions <br />
+1.1.6 Calculate which admissions have any leap days <br />
+1.1.7 Calculate and apply time shift to all dates to get true dates <br />
+1.1.8 Double check the time shifts are correct (compare deltas) <br />
+1.1.9 Make tables for notes in this study <br />
+
+**Input:** 
+```
+year_key.csv
+admissions
+inputevents_cv_adult
+noteevents
+```
+**Output:** Postgres tables
+```
+cv_real_dates
+adult_cv_notes
+time_study_id_date
+time_study_notes
+```
 
 # 1.2 Concatenate Notes
 [1.2_concat_notes.ipynb](1.2_concat_notes.ipynb)
@@ -317,7 +344,7 @@ NB_top_5000_matrix.pickle
 ```
 
 # 2.1 Remove Transfusion Terms From Naive Bayes Features
-[2.1_nb_remove_xf_term_collapse_ngrams.ipynb](2.1_nb_remove_xf_term_collapse_ngrams.ipynb)
+[2.1_nBayes_remove_transfused_terms.ipynb](2.1_nBayes_remove_transfused_terms.ipynb)
 
 + python 3 environment
 + Time and Transfused studies. 
@@ -359,7 +386,7 @@ NB_top_xxxx_terms_only_dist.csv
 NB_top_xxxx_hadmids_forSME.csv
 ```
 # 2.2 Remove Transfusion Terms From Logistic Regression Results
-[2.2_lr_remove_xf_term_collapse_ngrams.ipynb](2.2_lr_remove_xf_term_collapse_ngrams.ipynb)
+[2.2_logReg_remove_transfusion_terms.ipynb](2.2_logReg_remove_transfusion_terms.ipynb)
 
 + python 3 environment
 
