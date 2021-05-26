@@ -3,8 +3,11 @@
 
 The Shakespeare-Method repository contains the code we used (in a user friendly tutorial style) to develop a new method to identify attributed and unattributed potential adverse events using the unstructured notes portion of electronic health records. This repository consists of ipython notebooks that are meant to be linear and easy to follow without having to understand the entire codebase. The level of abstraction has been kept to a minimum for this reason. Copies of the notebooks rendered as PDFs are provided in the [/pdf/](./pdf) directory for quick viewing. 
 
+Many methods for finding AEs in text rely on pre-defining possible AEs before searching for pre-specified words and phrases or manual labeling (standardization) by investigators. We developed a method to identify possible AEs, even if unknown or unattributed, without any pre-specifications or standardization of notes. Our method is inspired by word-frequency analysis methods used to uncover the true authorship of disputed works credited to William Shakespeare.
 
-We chose the case of transfusion adverse events  and potential transfusion adverse events because new transfusion adverse events types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential transfusion adverse events in the notes. We used MIMIC-III (EHRs for adult critical care admissions at a major teaching hospital, 2001-2012) dataset and formed a Transfused group (21,443 admissions treated with packed red blood cells, platelets, or plasma), excluded 2,373 ambiguous admissions (grey), and formed a Comparison group of 25,468 admissions. We concatenated the text notes for each admission, sorted by date, into one document, and deleted replicate sentences and lists. We  identified statistically significant words in Transfused vs. Comparison. Then, Transfused documents were vectorized on only those words, followed by topic modeling on these Transfused documents to produce 45 topics. After assigning the maximum topic to each document, we separated the documents (admissions) that had a low maximum topic score for further review by subject matter experts to evaluate for potential adverse events.
+We chose two use cases, “Transfusion” and “Time Periods”.  Transfusion was chosen because new transfusion adverse event (AE) types were becoming recognized during the study data period; therefore, we anticipated an opportunity to find unattributed potential AEs (PAEs) in the notes. With the “Time Periods” case we wanted to simulate near real time surveillance. We chose time periods in the hope of detecting PAEs due to contaminated heparin during mid-2007 to mid-2008 that were announced in early 2008. We hypothesized that the prevalence of contaminated heparin may have been widespread enough to manifest in EHRs through symptoms related to heparin adverse events, independent of clinicians’ documentation of attributed AEs.
+
+We used EHRs for adult critical care admissions at a major teaching hospital, 2001-2012 (MIMIC III Database). For each case, we formed a group of interest and a comparison group. We concatenated the text notes for each admission into one document sorted by date, and deleted replicate sentences and lists. We  identified statistically significant words in the group of interest vs. the comparison group. Documents in the group of interest were filtered to those words, followed by topic modeling on the filtered documents to produce  topics. For each topic, the three documents with the maximum topic scores were manually reviewed to identify PAEs. 
 
 **The Shakespeare Method has five steps:**
  
@@ -16,17 +19,17 @@ We chose the case of transfusion adverse events  and potential transfusion adver
 
 Step 2 is described in detail in Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
 
-Steps 1, 3, and 4 are described in detail in this repository. A flowchart of this process can be seen below.
+The other steps are described in detail in this repository. A flowchart of this process can be seen below.
 
 ![Shakespeare Method process with truncated examples](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/images/SM_overview_pic.png)
 
 # Citations
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
 
-Summer K. Rankin, Roselie A. Bright, Katherine Dowdy. (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
+Summer K. Rankin, Katherine Dowdy, Roselie A. Bright.  (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
 ```
 @software{summer_k_rankin_2021_4711819,
-  author       = {Summer K. Rankin and Roselie A. Bright and Kate Dowdy},
+  author       = {Summer K. Rankin and Kate Dowdy and Roselie A. Bright},
   title        = {MIT-LCP/Shakespeare-Method: Official release 2},
   month        = apr,
   year         = 2021,
@@ -39,9 +42,7 @@ Summer K. Rankin, Roselie A. Bright, Katherine Dowdy. (2021, April 22). MIT-LCP/
 
 and the papers describing the Shakespeare Method
 
-Bright RA, Dowdy K, Rankin SK, Blok S, Palmer LA, Bright-Ponte SJ. New and Increasing Rates of Adverse Events Can be Found in Unstructured Text in Electronic Health Records using the Shakespeare Method. medRxiv 2021.01.12.21249674. https://doi.org/10.1101/2021.01.12.21249674.
- 
-Bright RA, Rankin SK, Dowdy K, Blok S, Bright-Ponte, SJ, Palmer LA. Potential Blood Transfusion Adverse Events Can be Found in Unstructured Text in Electronic Health Records using the ‘Shakespeare Method’. medRxiv 2021.01.05.21249239. https://doi.org/10.1101/2021.01.05.21249239.
+Bright RA, Rankin SK, Dowdy K, Blok S, Bright-Ponte, SJ, Palmer LA. (under review). The New “Shakespeare Method” Can Find Potential Adverse Events in the Unstructured Text in Electronic Health Records. JMIR Med Inform. 
  
 Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
 
@@ -53,7 +54,7 @@ x.y_description
 
   + 1.y = labeling, preprocessing, cleaning, tokenization, vectorization
   + 2.y = feature selection
-  + 3.y = LDA topic modeling
+  + 3.0 = LDA topic modeling
 
 # Data
 This project uses the MIMIC III Database. The MIMIC-III database was ingested into in a PostgreSQL (version 10.11 downloaded January 12,2020) database using PostgreSQL scripts from (https://github.com/MIT-LCP/mimic-code/tree/master/buildmimic/postgres, accessed January 12, 2020.
@@ -125,8 +126,8 @@ conda activate env_py3
 [1.0_create_adult_inputs.ipynb](1.0_create_adult_inputs.ipynb)
 
 + Python2 environment
-+ Time and Transfused studies. 
-This notebook is the first of 2 steps to create the cohort for our study. 
++ Time and Transfused studies
+This notebook is the first of 2 steps to create the cohorts.
 
 ![flowchart_of_cohort_creation](./images/cohort.png)
 
@@ -146,15 +147,13 @@ inputevents_mv_adult
 inputevents_cv_adult
 chartevents_adult
 inputs_all
-
 ```
 
 # 1.1a Transfused Cohort Selection 
 [1.1a_create_transfused_cohort.ipynb](1.1a_create_transfused_cohort.ipynb)
 
 + Python2 environment
-+ Transused Study Only
-
++ Transfused Study Only
 
 Label admissions and concatenate all notes for a single admission into one note (in chronological order).
 Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`.
@@ -170,7 +169,7 @@ Save notes in new tables `transfused_notes_sink` and `ctrl_notes_sink`.
     4. No grey input item
 
 
-**Input:** Postgres tables
+**Input:** 
 ```
 procedures_icd
 inputs_all
@@ -191,6 +190,9 @@ ctrl_ids
 ```
 # 1.1b Time-based Cohort Selection
 [1.1b_create_time_based_cohort.ipynb](1.1b_create_time_based_cohort.ipynb)
+
++ Python2 environment
++ Time Study Only
 
 Create a table in Postgres of admissions (and corresponding notes) related to heparin time periods by using a specific file that reveals the de-identified dates. 
 
@@ -224,8 +226,9 @@ time_study_notes
 [1.2_concat_notes.ipynb](1.2_concat_notes.ipynb)
 
 + Python 2 environment
-+ Both Time and Transfused Studies
-+ Retrieves all the notes from the cohort admissions, puts them in chronological order, and concatenates them into one large single document per admission.
++ Time and Transfused Studies
+
+Retrieves all the notes from the cohort admissions, puts them in chronological order, and concatenates them into one large single document per admission.
 
 **Input:** Postgres tables
 ```
@@ -245,17 +248,15 @@ ctrl_notes_sink
 # 1.3 Remove Notebloat
 [1.3_bloatectomy.ipynb](1.3_bloatectomy.ipynb)
 
-+ uses python3 environment b/c bloatectomy needs *python >= 3.7*
++ python3 environment b/c bloatectomy needs *python >= 3.7*
 + Time and Transfused studies. 
 
 Modified bloatectomy code to remove duplicate sections of text within an admission's concatenated notes. 
 For details about how the package works and our reasons for developing it, read the paper here https://github.com/MIT-LCP/bloatectomy/blob/master/bloatectomy_paper.pdf
 
-
 To acknowledge use of the Bloatectomy software, please cite the DOI provided via Zenodo:
 
 Summer K. Rankin, Roselie Bright, & Katherine Dowdy. (2020, June 26). Bloatectomy (Version v0.0.12). Zenodo. http://doi.org/10.5281/zenodo.3909030
-
 
 **Input**: postgres tables
 ```
@@ -272,8 +273,7 @@ ctrl_notes_unique
 [1.4_vectorization.ipynb](1.4_vectorization.ipynb)
 
 + Python 2 environment (recommended in an AWS instance)
-+ Time and Transfused studies. 
-
++ Time and Transfused studies
 
 We used the collocation detection skip-gram method for extracting the n-grams with n = 1-5 consecutive words. We vectorized each document using a bag of words representation where each dimension is represented by the frequency (count) of each n-gram, resulting in a set of 7,422,044 words.
 
@@ -282,7 +282,7 @@ This notebook is used to tokenize, get collocations (ngrams), count vectorize th
 We used an AWS (Amazon Web Services) EC2 memory-optimized instance (r4.8xlarge, 244GB memory, AMD64, Windows 10). The MIMIC database and POSTGRESQL must be accessible and the code in 1.0, 1.1, 1.2, should be run first to create the groups and deduplicate notes. The time to run the code was approximately 7.5 hours to create the groups, concatenate the notes into documents, and remove duplicate sections of text. We recommend using an expensive/large instance for only this step. All other steps can be done on a laptop with ~16 GB RAM.  
 
 + Saves as sparse matricies in pickle format (document-term matrix is broken up into 10 sections to make transfer back to a local computer or cheaper instance faster).
-+ We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing.
++ We recommend a transfer of the results (pickle files) to local computer or less expensive instance for further processing after vectorization is finished.
 
 **Input**
 ```
@@ -311,9 +311,9 @@ Features (terms) are selected using 2 methods:
 [2.0_classification_models.ipynb](2.0_classification_models.ipynb)
 
 + python 3 environment
++ Time and Transfused Study
 
-
-Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
+Runs multiple classification models on any 2 groups (transfused and non-transfused/control) to select the features most associated with the one group (transfused) and save them for further analysis.
 
 <img src="https://github.com/MIT-LCP/Shakespeare-Method/blob/main/images/supervised_flow.jpg" width="400" height="700">
 
@@ -344,10 +344,10 @@ NB_top_5000_matrix.pickle
 ```
 
 # 2.1 Remove Transfusion Terms From Naive Bayes Features
-[2.1_nBayes_remove_transfused_terms.ipynb](2.1_nBayes_remove_transfused_terms.ipynb)
+[2.1_nBayes_remove_transfusion_terms.ipynb](2.1_nBayes_remove_transfusion_terms.ipynb)
 
 + python 3 environment
-+ Time and Transfused studies. 
++ Transfused Study Only
 
 
 After sorting the n-grams according to the feature log probability, we removed all terms making direct and exclusive reference to the act of transfusion, because they both merely repeat the criteria for membership in the transfused group and obscure terms from other notes that might be indications for or outcomes of transfusion; as would be expected, these terms were highly associated with being in the transfused group. These transfusion terms were identified for removal by manual inspection (necessary because of the variety of abbreviations and spellings) informed by the contexts of these terms in multiple notes. Each time these transfusion-related terms were removed, they were added to a dictionary of transfusion-related terms. In the end this list grew to contain almost 1000 different terms [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx)
@@ -389,6 +389,7 @@ NB_top_xxxx_hadmids_forSME.csv
 [2.2_logReg_remove_transfusion_terms.ipynb](2.2_logReg_remove_transfusion_terms.ipynb)
 
 + python 3 environment
++ Transfused Study Only
 
 After sorting the n-grams according to the feature log probability, we removed all terms making direct and exclusive reference to the act of transfusion, because they both merely repeat the criteria for membership in the transfused group and obscure terms from other notes that might be indications for or outcomes of transfusion; as would be expected, these terms were highly associated with being in the transfused group. These transfusion terms were identified for removal by manual inspection (necessary because of the variety of abbreviations and spellings) informed by the contexts of these terms in multiple notes. Each time these transfusion-related terms were removed, they were added to a dictionary of transfusion-related terms. In the end this list grew to contain almost 1000 different terms [terms_indicate_transfusion9.xlsx](terms_indicate_transfusion9.xlsx).
 
@@ -417,6 +418,7 @@ LR_top_5000_terms_only.csv
 # 2.3 Feature Selection Via Classification and Statistical Models
 [2.3_classification_vocabs.ipynb](2.3_classification_vocabs.ipynb)
 + python 3 environment
++ Time and Transfused Study
 
 Run new classification on full dataset (no test-train split) using Logistic Regression (l1 penalty) and filter out low scoring words coef<0.2.
 
@@ -446,6 +448,7 @@ final_classification_features.csv
 [2.4_filtered_vocab.ipynb](2.4_filtered_vocab.ipynb)
 
 + Python 3 environment
++ Time and Transfused Study
 
 This notebook filters features using word frequencies (criteria below) and joins this list with the classification features.
 + Remove terms that are only digits (no letters)
@@ -464,10 +467,12 @@ final_classification_features.csv
 all_filtered_features.csv
 ```
 # 3.0 Topic Modeling
-[3.0_topic_model_transfused_filtered_vocab.ipynb](3.0_topic_model_transfused_filtered_vocab.ipynb)
+[3.0_topic_model_on_filtered_vocab.ipynb](3.0_topic_model_on_filtered_vocab.ipynb)
 
 + Python 3
-We reduced the Transfused document vectors to include only the 41,664 terms from 2.4.
++ Time and Transfused Study
+
+We reduced the Transfused document vectors to include only the 41,664 terms from step 2.4.
 
 Vectorization (count) the transfused admissions using vocabulary from [2.4_filtered_vocab.ipynb](2.4.0_filtered_vocab.ipynb) `all_filtered_features.csv`, then LDA topic modeling. Plot results using pyLDAvis and send to SMEs for review. Several models, visualizations and dataframes can be saved from this notebook, but this example contains the parameters for the best/final model parameters.
 
@@ -492,6 +497,14 @@ all_filtered_features.csv
 *_filtered_v1_thresh_15_outlier_hadmids.pkl
 *_filtered_v1_thresh_15_outlier_hadmids.csv
 ```
+
+# Plotting 
+[time_study_plot.ipynb](time_study_plot.ipynb)
+
++ Python 3
++ Time Study Only
+
+Plots for exploring the time-based cohort.
 # Contributing
 
 We encourage you to share any additions or changes to our code. To contribute, please:
