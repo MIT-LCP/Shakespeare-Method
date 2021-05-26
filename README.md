@@ -26,15 +26,15 @@ The other steps are described in detail in this repository. A flowchart of this 
 # Citations
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
 
-Summer K. Rankin, Katherine Dowdy, Roselie A. Bright.  (2021, April 22). MIT-LCP/Shakespeare-Method: Official release 2 (Version v0.2). Zenodo. http://doi.org/10.5281/zenodo.4711819
+Summer K. Rankin, Katherine Dowdy, Roselie A. Bright.  (2021, May). MIT-LCP/Shakespeare-Method: Macbeth(Version v0.3). Zenodo. http://doi.org/10.5281/zenodo.4711819
 ```
 @software{summer_k_rankin_2021_4711819,
   author       = {Summer K. Rankin and Kate Dowdy and Roselie A. Bright},
-  title        = {MIT-LCP/Shakespeare-Method: Official release 2},
-  month        = apr,
+  title        = {MIT-LCP/Shakespeare-Method: Macbeth},
+  month        = may,
   year         = 2021,
   publisher    = {Zenodo},
-  version      = {v0.2},
+  version      = {v0.3},
   doi          = {10.5281/zenodo.4711819},
   url          = {https://doi.org/10.5281/zenodo.4711819}
 }
