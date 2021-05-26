@@ -18,7 +18,7 @@ Step 2 is described in detail in Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin,
 
 Steps 1, 3, and 4 are described in detail in this repository. A flowchart of this process can be seen below.
 
-![Shakespeare Method process with truncated examples](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/SM_overview_pic.png)
+![Shakespeare Method process with truncated examples](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/images/SM_overview_pic.png)
 
 # Citations
 To acknowledge use of the code, please cite the DOI provided via Zenodo:
@@ -128,7 +128,7 @@ conda activate env_py3
 + Time and Transfused studies. 
 This notebook is the first of 2 steps to create the cohort for our study. 
 
-![flowchart_of_cohort_creation](./cohort.png)
+![flowchart_of_cohort_creation](./images/cohort.png)
 
 
 **Input**
@@ -149,8 +149,8 @@ inputs_all
 
 ```
 
-# 1.1 Transfused Cohort Selection 
-[1.1_create_groups_concat_notes.ipynb](1.1_create_groups_concat_notes.ipynb)
+# 1.1a Transfused Cohort Selection 
+[1.1a_create_transfused_cohort.ipynb](1.1a_create_transfused_cohort.ipynb)
 
 + Python2 environment
 + Transused Study Only
@@ -189,11 +189,40 @@ transfused_hadm_id
 grey_hadm_id
 ctrl_ids
 ```
-# 1.2 Time-based Cohort Selection
+# 1.1b Time-based Cohort Selection
+[1.1b_create_time_based_cohort.ipynb](1.1b_create_time_based_cohort.ipynb)
 
+Create a table in Postgres of admissions (and corresponding notes) related to heparin time periods by using a specific file that reveals the de-identified dates. 
 
+1.1.0 Import hadm_ids for which time key exists <br />
+1.1.1 Keep only adults from Carevue <br />
+1.1.2 Pull admissions that match the hadm_ids with time key <br />
+1.1.3 Pull admit times/ discharge times from admissions table <br />
+1.1.4 Save to a new table in posgres <br />
+1.1.5 Get notes for those admissions <br />
+1.1.6 Calculate which admissions have any leap days <br />
+1.1.7 Calculate and apply time shift to all dates to get true dates <br />
+1.1.8 Double check the time shifts are correct (compare deltas) <br />
+1.1.9 Make tables for notes in this study <br />
 
-# 1.3 Concatenate Notes
+**Input:** 
+```
+year_key.csv
+admissions
+inputevents_cv_adult
+noteevents
+```
+**Output:** Postgres tables
+```
+cv_real_dates
+adult_cv_notes
+time_study_id_date
+time_study_notes
+```
+
+# 1.2 Concatenate Notes
+[1.2_concat_notes.ipynb](1.2_concat_notes.ipynb)
+
 + Python 2 environment
 + Both Time and Transfused Studies
 + Retrieves all the notes from the cohort admissions, puts them in chronological order, and concatenates them into one large single document per admission.
@@ -213,8 +242,8 @@ transfused_notes_sink
 ctrl_notes_sink
 ```
 
-# 1.x Remove Notebloat
-[1.x_duplicate_removal.ipynb](1.x_duplicate_removal.ipynb)
+# 1.3 Remove Notebloat
+[1.3_bloatectomy.ipynb](1.3_bloatectomy.ipynb)
 
 + uses python3 environment b/c bloatectomy needs *python >= 3.7*
 + Time and Transfused studies. 
@@ -239,8 +268,8 @@ transfused_notes_unique
 ctrl_notes_unique 
 ```
 
-# 1.3 Vectorization of Text
-[1.3_vectorization.ipynb](1.3_vectorization.ipynb)
+# 1.4 Vectorization of Text
+[1.4_vectorization.ipynb](1.4_vectorization.ipynb)
 
 + Python 2 environment (recommended in an AWS instance)
 + Time and Transfused studies. 
@@ -286,7 +315,7 @@ Features (terms) are selected using 2 methods:
 
 Runs multiple classification models on the 2 groups (transfused and non-transfused/control) to select the features most associated with the transfused group and save them for further analysis.
 
-<img src="https://github.com/MIT-LCP/Shakespeare-Method/blob/main/supervised_flow.jpg" width="400" height="700">
+<img src="https://github.com/MIT-LCP/Shakespeare-Method/blob/main/images/supervised_flow.jpg" width="400" height="700">
 
 + test/train split
 + naive bayes classification
@@ -315,7 +344,7 @@ NB_top_5000_matrix.pickle
 ```
 
 # 2.1 Remove Transfusion Terms From Naive Bayes Features
-[2.1_nb_remove_xf_term_collapse_ngrams.ipynb](2.1_nb_remove_xf_term_collapse_ngrams.ipynb)
+[2.1_nBayes_remove_transfused_terms.ipynb](2.1_nBayes_remove_transfused_terms.ipynb)
 
 + python 3 environment
 + Time and Transfused studies. 
@@ -357,7 +386,7 @@ NB_top_xxxx_terms_only_dist.csv
 NB_top_xxxx_hadmids_forSME.csv
 ```
 # 2.2 Remove Transfusion Terms From Logistic Regression Results
-[2.2_lr_remove_xf_term_collapse_ngrams.ipynb](2.2_lr_remove_xf_term_collapse_ngrams.ipynb)
+[2.2_logReg_remove_transfusion_terms.ipynb](2.2_logReg_remove_transfusion_terms.ipynb)
 
 + python 3 environment
 
