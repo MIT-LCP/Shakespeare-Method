@@ -42,9 +42,7 @@ Summer K. Rankin, Katherine Dowdy, Roselie A. Bright.  (2021, May 26). MIT-LCP/S
 
 and the papers describing the Shakespeare Method
 
-Bright RA, Rankin SK, Dowdy K, Blok SV, Bright SJ, Palmer LAM 
-Finding Potential Adverse Events in the Unstructured Text of Electronic Health Care Records: Development of the Shakespeare Method
-JMIRx Med 2021;2(3):e27017  doi: 10.2196/27017
+Roselie A. Bright, Summer K. Rankin, Kate Dowdy, Sergey V. Blok, Susan J. Bright, and Lee Anne M. Palmer. (2021, Aug 11). Finding Potential Adverse Events in the Unstructured Text of Electronic Health Care Records: Development of the Shakespeare Method. JMIRx Med 2021;2(3):e27017  doi: 10.2196/27017 https://xmed.jmir.org/2021/3/e27017
 
 ```
 @article{bright_roselie_2021_27017,
