@@ -9,7 +9,8 @@ We chose two use cases, “Transfusion” and “Time Periods”.  Transfusion w
 
 We used EHRs for adult critical care admissions at a major teaching hospital, 2001-2012 (MIMIC III Database). For each case, we formed a group of interest and a comparison group. We concatenated the text notes for each admission into one document sorted by date, and deleted replicate sentences and lists. We  identified statistically significant words in the group of interest vs. the comparison group. Documents in the group of interest were filtered to those words, followed by topic modeling on the filtered documents to produce  topics. For each topic, the three documents with the maximum topic scores were manually reviewed to identify PAEs. 
 
-Definitions for medical terms and abbreviations found in the MIMIC III text are located in [here](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv) and [here](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx)
+Definitions for medical terms and abbreviations found in the MIMIC III text are located in [here](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv) and [here](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx) information for these files is [here](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/Info%20re%20Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.txt)
+
 
 
 **The Shakespeare Method has five steps:**
