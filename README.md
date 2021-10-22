@@ -11,7 +11,7 @@ We used EHRs for adult critical care admissions at a major teaching hospital, 20
 
 #### Definitions of terms in MIMIC III notes
 
-We started a spreadsheet of unfamiliar (to us) terms, definitions, and references found in the MIMIC III text. Most of these terms are not standard terms available in standard sources such as UMLS. A [description]() and the file of definitions can be downloaded from this repository as a [.csv](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv) or [.xlsx](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx). 
+We started a spreadsheet of unfamiliar (to us) terms, definitions, and references found in the MIMIC III text. Most of these terms are not standard terms available in standard sources such as UMLS. A [description](README_Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.md) and the file of definitions can be downloaded from this repository as a [.csv](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv) or [.xlsx](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx). 
 
 **The Shakespeare Method has five steps:**
  
