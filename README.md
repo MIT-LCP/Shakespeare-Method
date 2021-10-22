@@ -23,19 +23,17 @@ This list is the result of an attempt for Dr. Bright to fill gaps in knowledge a
 We hope this file will form the basis for a growing file that reflects additions and corrections.
 
 The file has four fields: 
-+ 1. Defined term
-+ 2. Definition
-+ 3. Reference1
-+ 4. Reference2
+1. Defined term
+2. Definition
+3. Reference1
+4. Reference2
 
 If more than one meaning was found for a defined term (this happened many times), there is a separate entry for each. Definitions are in the form of a phrase or one or more complete sentences. Up to two references are allowed for each entry. References are a mix of books and online addresses.
 
 In addition to the above file, we found some other useful references:
-    + Liver function tests. [https://www.mayoclinic.org/tests-procedures/liver-function-tests/about/pac-20394595](https://www.mayoclinic.org/tests-procedures/liver-function-tests/about/pac-20394595)
-
-    + Normal hemodynamic values. [http://www.ucdenver.edu/academics/colleges/medicalschool/departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf](http://www.ucdenver.edu/academics/colleges/medicalschool/departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf)
-    
-    + Laboratory tests. [https://www.nurseslearning.com/courses/nrp/labtest/course/section8/index.htm](https://www.nurseslearning.com/courses/nrp/labtest/course/section8/index.htm)
+- Liver function tests https://www.mayoclinic.org/tests-procedures/liver-function-tests/about/pac-20394595
+- Normal hemodynamic values http://www.ucdenver.edu/academics/colleges/medicalschool/departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf
+- Laboratory tests https://www.nurseslearning.com/courses/nrp/labtest/course/section8/index.htm
 
 
 **The Shakespeare Method has five steps:**
