@@ -1,5 +1,9 @@
-# README for Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913
+# README for Definitions
 By Roselie A. Bright, ScD, MS
+
+Definitions file can be downloaded in 2 formats
+- [Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv)
+- [Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx](https://github.com/MIT-LCP/Shakespeare-Method/blob/main/Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx)
 
 **Disclaimer: the contents of and any errors in this and the dictionary file are my own 
 and do not reflect opinions or policies of the rest of the Shakespeare Project Team or 
@@ -34,14 +38,10 @@ I recommend reading the book by Laurence M. Deutsch (Medical Records for Attorne
 ALI-ABA 2001) for an introduction to clinical records for non-clinicians. In addition 
 to the resources listed in the file, I found some other useful references:
 
-- [Liver function tests](https://www.mayoclinic.org/tests-procedures/liver-function-tests/
-about/pac-20394595).
+- Liver function tests. (https://www.mayoclinic.org/tests-procedures/liver-function-tests/about/pac-20394595).
 
-- [Normal hemodynamic values](http://www.ucdenver.edu/academics/colleges/medicalschool/
-departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/
-Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf)
+- Normal hemodynamic values. (http://www.ucdenver.edu/academics/colleges/medicalschool/departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20%202011/Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf)
 
-- [Laboratory tests](https://www.nurseslearning.com/courses/nrp/labtest/course/section8/
-index.htm)
+- Laboratory tests. (https://www.nurseslearning.com/courses/nrp/labtest/course/section8/index.htm)
 
 I hope this file will grow with additions and corrections.
