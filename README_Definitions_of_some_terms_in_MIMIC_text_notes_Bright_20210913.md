@@ -1,11 +1,11 @@
-README for Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913
+# README for Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913
 By Roselie A. Bright, ScD, MS
 
-Disclaimer: the contents of and any errors in this and the dictionary file are my own 
+**Disclaimer: the contents of and any errors in this and the dictionary file are my own 
 and do not reflect opinions or policies of the rest of the Shakespeare Project Team or 
 my employer, Food and Drug Administration. This is a by-product of work done for the 
 Shakespeare Project, and thus was funded by the US government and therefore is 
-considered open source.
+considered open source.**
 
 This file and the dictionary file have the @2021 Creative Commons BY-SA license 
 (https://creativecommons.org/licenses/by-sa/4.0/), meaning re-users may distribute, 
@@ -29,18 +29,19 @@ more than one meaning was found for a defined term (this happened many times), t
 a separate entry for each. Definitions are in the form of a phrase or one or more 
 complete sentences. Up to two references are allowed for each entry. References are a 
 mix of books and online addresses.
+
 I recommend reading the book by Laurence M. Deutsch (Medical Records for Attorneys, 
 ALI-ABA 2001) for an introduction to clinical records for non-clinicians. In addition 
 to the resources listed in the file, I found some other useful references:
 
--Liver function tests. https://www.mayoclinic.org/tests-procedures/liver-function-tests/
-about/pac-20394595.
+- [Liver function tests](https://www.mayoclinic.org/tests-procedures/liver-function-tests/
+about/pac-20394595).
 
--Normal hemodynamic values. http://www.ucdenver.edu/academics/colleges/medicalschool/
+- [Normal hemodynamic values](http://www.ucdenver.edu/academics/colleges/medicalschool/
 departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/
-Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf.
+Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf)
 
--Laboratory tests. https://www.nurseslearning.com/courses/nrp/labtest/course/section8/
-index.htm.
+- [Laboratory tests](https://www.nurseslearning.com/courses/nrp/labtest/course/section8/
+index.htm)
 
 I hope this file will grow with additions and corrections.
