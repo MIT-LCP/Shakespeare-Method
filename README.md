@@ -10,27 +10,32 @@ We chose two use cases, “Transfusion” and “Time Periods”.  Transfusion w
 We used EHRs for adult critical care admissions at a major teaching hospital, 2001-2012 (MIMIC III Database). For each case, we formed a group of interest and a comparison group. We concatenated the text notes for each admission into one document sorted by date, and deleted replicate sentences and lists. We  identified statistically significant words in the group of interest vs. the comparison group. Documents in the group of interest were filtered to those words, followed by topic modeling on the filtered documents to produce  topics. For each topic, the three documents with the maximum topic scores were manually reviewed to identify PAEs. 
 
 #### Definitions of terms in MIMIC III notes
-**Roselie Bright, ScD, MS**
 
-While reading many MIMIC records and isolated n-grams (n from 1 to 5) as part of the Shakespeare project, I came across many terms unfamiliar to me. 
+Dr. Bright is an epidemiologist and though she is not a clinician, she does have some medical knowledge. Dr. Bright recommends reading the Deutsch book (Medical records for attorneys. ALI-ABA 2001) for an introduction to clinical records for nonclinicians.
 
-I am not a clinician but do have some medical knowledge. I recommend reading the Deutsch book (Medical records for attorneys. ALI-ABA 2001.) for an introduction to clinical records for nonclinicians. I started a file of terms, definitions, and references. Most of them are not standard terms available in standard sources such as UMLS. Many of the definitions were difficult to find. 
+While reading many MIMIC III records and isolated n-grams (n from 1 to 5) as part of the Shakespeare project, we came across many unfamiliar terms. 
+We started a spreadsheet of these terms, definitions, and references found in the MIMIC III text. Most of these terms are not standard terms available in standard sources such as UMLS. Many of the definitions were difficult to find. 
 
-This list is a start because I was filling in my own gaps in knowledge and addressing what I encountered; I did not attempt to be comprehensive. Nonetheless, this contribution could be useful to people in a similar position as mine.
+This file of definitions can be downloaded from this repository as a [.csv](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv) or [.xlsx](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx). 
 
-I hope this file will form the basis for a growing file that reflects additions and corrections.
+This list is the result of an attempt for Dr. Bright to fill gaps in knowledge and address what was learned; she did not attempt to be comprehensive. Nonetheless, this contribution could be useful to people in a similar position.
 
-The file has four fields: Defined term, Definition, Reference1, and Reference2. If more than one meaning was found for a defined term (this happened many times), there is a separate entry for each. Definitions are in the form of a phrase or one or more complete sentences. Up to two references are allowed for each entry. References are a mix of books and online addresses.
+We hope this file will form the basis for a growing file that reflects additions and corrections.
 
-In addition to the above file, I found some other useful references:
-    - Liver function tests. https://www.mayoclinic.org/tests-procedures/liver-function-tests/about/pac-20394595.
+The file has four fields: 
++ 1. Defined term
++ 2. Definition
++ 3. Reference1
++ 4. Reference2
 
-    - Normal hemodynamic values. http://www.ucdenver.edu/academics/colleges/medicalschool/departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf.
+If more than one meaning was found for a defined term (this happened many times), there is a separate entry for each. Definitions are in the form of a phrase or one or more complete sentences. Up to two references are allowed for each entry. References are a mix of books and online addresses.
+
+In addition to the above file, we found some other useful references:
+    + Liver function tests. [https://www.mayoclinic.org/tests-procedures/liver-function-tests/about/pac-20394595](https://www.mayoclinic.org/tests-procedures/liver-function-tests/about/pac-20394595)
+
+    + Normal hemodynamic values. [http://www.ucdenver.edu/academics/colleges/medicalschool/departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf](http://www.ucdenver.edu/academics/colleges/medicalschool/departments/surgery/education/GrandRounds/Documents/GRpdfs/2010%20-%202011/Aug%209%20Shock-Hemodynamics-Monitoring%20Goldberg.pdf)
     
-    - Laboratory tests. https://www.nurseslearning.com/courses/nrp/labtest/course/section8/index.htm.
-
-The file of these definitions for medical terms and abbreviations found in the MIMIC III text are located [definitions in .csv](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.csv) or [definitions in .xlsx](Definitions_of_some_terms_in_MIMIC_text_notes_Bright_20210913.xlsx) 
-
+    + Laboratory tests. [https://www.nurseslearning.com/courses/nrp/labtest/course/section8/index.htm](https://www.nurseslearning.com/courses/nrp/labtest/course/section8/index.htm)
 
 
 **The Shakespeare Method has five steps:**
