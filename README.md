@@ -63,8 +63,19 @@ Roselie A. Bright, Summer K. Rankin, Kate Dowdy, Sergey V. Blok, Susan J. Bright
 }
 ```
 
- 
-Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. medRxiv 2020.12.30.20218610.  https://doi.org/10.1101/2020.12.30.20218610.
+Bright RA, Bright-Ponte, SJ, Palmer LA, Rankin, SK, Blok S. Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records. Journal of Patient Safety: February 21, 2022, doi: 10.1097/PTS.0000000000000946 https://journals.lww.com/journalpatientsafety/Abstract/9000/Use_of_Diagnosis_Codes_to_Find_Blood_Transfusion.98879.aspx
+
+```
+@article{bright_roselie_2022,
+    author = {Roselie A. Bright, Susan J. Bright, Lee Anne M. Palmer, Summer K. Rankin, Sergey V. Blok},
+    title = {Use of Diagnosis Codes to Find Blood Transfusion Adverse Events in Electronic Health Records},
+    month = feb,
+    year = 2022,
+    journal = {Journal of Patient Safety},
+    doi = {10.1097/PTS.0000000000000946},
+    url = {https://journals.lww.com/journalpatientsafety/Abstract/9000/Use_of_Diagnosis_Codes_to_Find_Blood_Transfusion.98879.aspx}
+    }
+```
 
 
 ## Structure of repository
